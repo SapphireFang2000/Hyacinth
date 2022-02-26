@@ -180,6 +180,11 @@ public class Staff extends javax.swing.JFrame
         deleteButton.setFont(new java.awt.Font("Monotype Corsiva", 1, 24)); // NOI18N
         deleteButton.setForeground(new java.awt.Color(255, 255, 255));
         deleteButton.setText("Delete");
+        deleteButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                deleteButtonMouseClicked(evt);
+            }
+        });
 
         jLabel15.setFont(new java.awt.Font("Monotype Corsiva", 1, 36)); // NOI18N
         jLabel15.setForeground(new java.awt.Color(255, 153, 51));
@@ -426,6 +431,34 @@ public class Staff extends javax.swing.JFrame
         staffPhoneNo.setText("");
         staffPassword.setText("");
     }//GEN-LAST:event_clearButtonMouseClicked
+    //Code of Delete Button. Delete a staff data from the JTable as well as the Database.
+    private void deleteButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_deleteButtonMouseClicked
+        
+        if(staffID.getText().isEmpty())
+        {
+            JOptionPane.showMessageDialog(this, "Enter the staff details to be deleted.");
+        }
+        else
+        {
+            try
+            {
+                con = DriverManager.getConnection("jdbc:mysql://localhost:3306/hyacinth", "root", "");
+                
+                String stID = staffID.getText();
+                String query = "Delete from hyacinth.staff_db where ID=" + stID;
+                Statement add = con.createStatement();
+                add.executeUpdate(query);
+                
+                SelectStaff(); //Calling the method to show the data from the database into the JTable.
+                
+                JOptionPane.showMessageDialog(this, "Staff Deleted Successfully.");
+            }
+            catch(Exception e)
+            {
+                e.printStackTrace();
+            }
+        }
+    }//GEN-LAST:event_deleteButtonMouseClicked
 
     /**
      * @param args the command line arguments
