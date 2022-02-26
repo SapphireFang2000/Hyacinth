@@ -5,17 +5,48 @@
  */
 package project;
 
+//import com.mysql.cj.xdevapi.Statement;
+import java.sql.Statement;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import javax.swing.JOptionPane;
+import net.proteanit.sql.DbUtils;
+
 /**
  *
  * @author Sapphire Fang
  */
-public class Staff extends javax.swing.JFrame {
+public class Staff extends javax.swing.JFrame 
+{
 
     /**
      * Creates new form Staff
      */
-    public Staff() {
+    public Staff() 
+    {
         initComponents();
+        SelectStaff();
+    }
+    
+    Connection con = null;
+    Statement st = null;
+    ResultSet rs = null;
+    
+    public void SelectStaff()
+    {
+        try
+        {
+            con = DriverManager.getConnection("jdbc:mysql://localhost:3306/hyacinth", "root", "");
+            st = con.createStatement();
+            rs = st.executeQuery("Select * from hyacinth.staff_db");
+            staffTable.setModel(DbUtils.resultSetToTableModel(rs));
+        }
+        catch (Exception e)
+        {
+            e.printStackTrace();
+        }
     }
 
     /**
@@ -38,19 +69,19 @@ public class Staff extends javax.swing.JFrame {
         jLabel12 = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
         jLabel14 = new javax.swing.JLabel();
-        jTextField2 = new javax.swing.JTextField();
-        jTextField3 = new javax.swing.JTextField();
-        jTextField4 = new javax.swing.JTextField();
-        jComboBox1 = new javax.swing.JComboBox<>();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
-        jButton5 = new javax.swing.JButton();
+        staffPhoneNo = new javax.swing.JTextField();
+        staffName = new javax.swing.JTextField();
+        staffAge = new javax.swing.JTextField();
+        staffGender = new javax.swing.JComboBox<>();
+        addButton = new javax.swing.JButton();
+        updateButton = new javax.swing.JButton();
+        clearButton = new javax.swing.JButton();
+        deleteButton = new javax.swing.JButton();
         jLabel15 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
-        jTextField6 = new javax.swing.JTextField();
-        jTextField7 = new javax.swing.JTextField();
+        staffTable = new javax.swing.JTable();
+        staffID = new javax.swing.JTextField();
+        staffPassword = new javax.swing.JTextField();
         jLabel16 = new javax.swing.JLabel();
         jLabel17 = new javax.swing.JLabel();
 
@@ -97,54 +128,60 @@ public class Staff extends javax.swing.JFrame {
         jLabel14.setForeground(new java.awt.Color(255, 153, 51));
         jLabel14.setText("Staffs List");
 
-        jTextField2.setBackground(new java.awt.Color(255, 255, 255));
-        jTextField2.setFont(new java.awt.Font("Monotype Corsiva", 0, 24)); // NOI18N
-        jTextField2.setForeground(new java.awt.Color(255, 153, 51));
+        staffPhoneNo.setBackground(new java.awt.Color(255, 255, 255));
+        staffPhoneNo.setFont(new java.awt.Font("Monotype Corsiva", 0, 24)); // NOI18N
+        staffPhoneNo.setForeground(new java.awt.Color(255, 153, 51));
 
-        jTextField3.setBackground(new java.awt.Color(255, 255, 255));
-        jTextField3.setFont(new java.awt.Font("Monotype Corsiva", 0, 24)); // NOI18N
-        jTextField3.setForeground(new java.awt.Color(255, 153, 51));
+        staffName.setBackground(new java.awt.Color(255, 255, 255));
+        staffName.setFont(new java.awt.Font("Monotype Corsiva", 0, 24)); // NOI18N
+        staffName.setForeground(new java.awt.Color(255, 153, 51));
 
-        jTextField4.setBackground(new java.awt.Color(255, 255, 255));
-        jTextField4.setFont(new java.awt.Font("Monotype Corsiva", 0, 24)); // NOI18N
-        jTextField4.setForeground(new java.awt.Color(255, 153, 51));
+        staffAge.setBackground(new java.awt.Color(255, 255, 255));
+        staffAge.setFont(new java.awt.Font("Monotype Corsiva", 0, 24)); // NOI18N
+        staffAge.setForeground(new java.awt.Color(255, 153, 51));
 
-        jComboBox1.setBackground(new java.awt.Color(255, 255, 255));
-        jComboBox1.setFont(new java.awt.Font("Monotype Corsiva", 0, 24)); // NOI18N
-        jComboBox1.setForeground(new java.awt.Color(255, 153, 51));
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Male", "Female" }));
+        staffGender.setBackground(new java.awt.Color(255, 255, 255));
+        staffGender.setFont(new java.awt.Font("Monotype Corsiva", 0, 24)); // NOI18N
+        staffGender.setForeground(new java.awt.Color(255, 153, 51));
+        staffGender.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Male", "Female" }));
 
-        jButton2.setBackground(new java.awt.Color(255, 153, 51));
-        jButton2.setFont(new java.awt.Font("Monotype Corsiva", 1, 24)); // NOI18N
-        jButton2.setForeground(new java.awt.Color(255, 255, 255));
-        jButton2.setText("Add");
-
-        jButton3.setBackground(new java.awt.Color(255, 153, 51));
-        jButton3.setFont(new java.awt.Font("Monotype Corsiva", 1, 24)); // NOI18N
-        jButton3.setForeground(new java.awt.Color(255, 255, 255));
-        jButton3.setText("Update");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+        addButton.setBackground(new java.awt.Color(255, 153, 51));
+        addButton.setFont(new java.awt.Font("Monotype Corsiva", 1, 24)); // NOI18N
+        addButton.setForeground(new java.awt.Color(255, 255, 255));
+        addButton.setText("Add");
+        addButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                addButtonMouseClicked(evt);
             }
         });
 
-        jButton4.setBackground(new java.awt.Color(255, 153, 51));
-        jButton4.setFont(new java.awt.Font("Monotype Corsiva", 1, 24)); // NOI18N
-        jButton4.setForeground(new java.awt.Color(255, 255, 255));
-        jButton4.setText("Clear");
+        updateButton.setBackground(new java.awt.Color(255, 153, 51));
+        updateButton.setFont(new java.awt.Font("Monotype Corsiva", 1, 24)); // NOI18N
+        updateButton.setForeground(new java.awt.Color(255, 255, 255));
+        updateButton.setText("Update");
+        updateButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                updateButtonActionPerformed(evt);
+            }
+        });
 
-        jButton5.setBackground(new java.awt.Color(255, 153, 51));
-        jButton5.setFont(new java.awt.Font("Monotype Corsiva", 1, 24)); // NOI18N
-        jButton5.setForeground(new java.awt.Color(255, 255, 255));
-        jButton5.setText("Delete");
+        clearButton.setBackground(new java.awt.Color(255, 153, 51));
+        clearButton.setFont(new java.awt.Font("Monotype Corsiva", 1, 24)); // NOI18N
+        clearButton.setForeground(new java.awt.Color(255, 255, 255));
+        clearButton.setText("Clear");
+
+        deleteButton.setBackground(new java.awt.Color(255, 153, 51));
+        deleteButton.setFont(new java.awt.Font("Monotype Corsiva", 1, 24)); // NOI18N
+        deleteButton.setForeground(new java.awt.Color(255, 255, 255));
+        deleteButton.setText("Delete");
 
         jLabel15.setFont(new java.awt.Font("Monotype Corsiva", 1, 36)); // NOI18N
         jLabel15.setForeground(new java.awt.Color(255, 153, 51));
         jLabel15.setText("Manage Staff");
 
-        jTable1.setBackground(new java.awt.Color(255, 255, 255));
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        staffTable.setBackground(new java.awt.Color(255, 255, 255));
+        staffTable.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+        staffTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null, null},
                 {null, null, null, null, null, null},
@@ -156,15 +193,15 @@ public class Staff extends javax.swing.JFrame {
                 "ID", "Name", "Age", "Phone No.", "Password", "Gender"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(staffTable);
 
-        jTextField6.setBackground(new java.awt.Color(255, 255, 255));
-        jTextField6.setFont(new java.awt.Font("Monotype Corsiva", 0, 24)); // NOI18N
-        jTextField6.setForeground(new java.awt.Color(255, 153, 51));
+        staffID.setBackground(new java.awt.Color(255, 255, 255));
+        staffID.setFont(new java.awt.Font("Monotype Corsiva", 0, 24)); // NOI18N
+        staffID.setForeground(new java.awt.Color(255, 153, 51));
 
-        jTextField7.setBackground(new java.awt.Color(255, 255, 255));
-        jTextField7.setFont(new java.awt.Font("Monotype Corsiva", 0, 24)); // NOI18N
-        jTextField7.setForeground(new java.awt.Color(255, 153, 51));
+        staffPassword.setBackground(new java.awt.Color(255, 255, 255));
+        staffPassword.setFont(new java.awt.Font("Monotype Corsiva", 0, 24)); // NOI18N
+        staffPassword.setForeground(new java.awt.Color(255, 153, 51));
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -183,9 +220,9 @@ public class Staff extends javax.swing.JFrame {
                             .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, 215, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, 215, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 215, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(staffID, javax.swing.GroupLayout.PREFERRED_SIZE, 215, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(staffAge, javax.swing.GroupLayout.PREFERRED_SIZE, 215, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(staffName, javax.swing.GroupLayout.PREFERRED_SIZE, 215, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(189, 189, 189)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -193,9 +230,9 @@ public class Staff extends javax.swing.JFrame {
                             .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jTextField2, javax.swing.GroupLayout.DEFAULT_SIZE, 215, Short.MAX_VALUE)
-                            .addComponent(jTextField7, javax.swing.GroupLayout.DEFAULT_SIZE, 215, Short.MAX_VALUE)
-                            .addComponent(jComboBox1, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(staffPhoneNo, javax.swing.GroupLayout.DEFAULT_SIZE, 215, Short.MAX_VALUE)
+                            .addComponent(staffPassword, javax.swing.GroupLayout.DEFAULT_SIZE, 215, Short.MAX_VALUE)
+                            .addComponent(staffGender, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addGap(54, 54, 54))))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -205,13 +242,13 @@ public class Staff extends javax.swing.JFrame {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(172, 172, 172)
-                        .addComponent(jButton2)
+                        .addComponent(addButton)
                         .addGap(109, 109, 109)
-                        .addComponent(jButton3)
+                        .addComponent(updateButton)
                         .addGap(109, 109, 109)
-                        .addComponent(jButton5)
+                        .addComponent(deleteButton)
                         .addGap(99, 99, 99)
-                        .addComponent(jButton4))
+                        .addComponent(clearButton))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(429, 429, 429)
                         .addComponent(jLabel14, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -225,27 +262,27 @@ public class Staff extends javax.swing.JFrame {
                 .addGap(34, 34, 34)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel12)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(staffPhoneNo, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel7)
-                    .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(staffID, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(17, 17, 17)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel13)
-                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(staffName, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel6)
-                    .addComponent(jTextField7, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(staffPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel11)
-                    .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(staffAge, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel5)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(staffGender, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(47, 47, 47)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton2)
-                    .addComponent(jButton3)
-                    .addComponent(jButton5)
-                    .addComponent(jButton4))
+                    .addComponent(addButton)
+                    .addComponent(updateButton)
+                    .addComponent(deleteButton)
+                    .addComponent(clearButton))
                 .addGap(28, 28, 28)
                 .addComponent(jLabel14)
                 .addGap(18, 18, 18)
@@ -319,9 +356,43 @@ public class Staff extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+    private void updateButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateButtonActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton3ActionPerformed
+    }//GEN-LAST:event_updateButtonActionPerformed
+
+    private void addButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_addButtonMouseClicked
+        
+        if(staffID.getText().isEmpty() || staffName.getText().isEmpty() || staffAge.getText().isEmpty() || staffPhoneNo.getText().isEmpty() || staffPhoneNo.getText().isEmpty())
+        {
+            JOptionPane.showMessageDialog(this, "Missing Information.");
+        }
+        else
+        {
+            try
+            {
+                con = DriverManager.getConnection("jdbc:mysql://localhost:3306/hyacinth", "root", "");
+                PreparedStatement add = con.prepareStatement("insert into staff_db values(?,?,?,?,?,?)");
+            
+                add.setInt(1, Integer.valueOf(staffID.getText()));
+                add.setString(2, staffName.getText());
+                add.setInt(3, Integer.valueOf(staffAge.getText()));
+                add.setString(4, staffPhoneNo.getText());
+                add.setString(5, staffPassword.getText());
+                add.setString(6, staffGender.getSelectedItem().toString());
+            
+                int row = add.executeUpdate();
+            
+                JOptionPane.showMessageDialog(this, "Seller Added Successfully.");
+                
+                con.close();
+                SelectStaff();
+            }
+            catch (Exception e)
+            {
+                e.printStackTrace();
+            }
+        }
+    }//GEN-LAST:event_addButtonMouseClicked
 
     /**
      * @param args the command line arguments
@@ -359,11 +430,9 @@ public class Staff extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
-    private javax.swing.JComboBox<String> jComboBox1;
+    private javax.swing.JButton addButton;
+    private javax.swing.JButton clearButton;
+    private javax.swing.JButton deleteButton;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
@@ -379,11 +448,13 @@ public class Staff extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField4;
-    private javax.swing.JTextField jTextField6;
-    private javax.swing.JTextField jTextField7;
+    private javax.swing.JTextField staffAge;
+    private javax.swing.JComboBox<String> staffGender;
+    private javax.swing.JTextField staffID;
+    private javax.swing.JTextField staffName;
+    private javax.swing.JTextField staffPassword;
+    private javax.swing.JTextField staffPhoneNo;
+    private javax.swing.JTable staffTable;
+    private javax.swing.JButton updateButton;
     // End of variables declaration//GEN-END:variables
 }
