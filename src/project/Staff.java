@@ -12,6 +12,7 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 import net.proteanit.sql.DbUtils;
 
 /**
@@ -29,11 +30,11 @@ public class Staff extends javax.swing.JFrame
         initComponents();
         SelectStaff();
     }
-    
+    //Database Variable
     Connection con = null;
     Statement st = null;
     ResultSet rs = null;
-    
+    //Showing the database data into the JTable UI.
     public void SelectStaff()
     {
         try
@@ -193,6 +194,11 @@ public class Staff extends javax.swing.JFrame
                 "ID", "Name", "Age", "Phone No.", "Password", "Gender"
             }
         ));
+        staffTable.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                staffTableMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(staffTable);
 
         staffID.setBackground(new java.awt.Color(255, 255, 255));
@@ -359,7 +365,7 @@ public class Staff extends javax.swing.JFrame
     private void updateButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateButtonActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_updateButtonActionPerformed
-
+    //Code of Add Button. Adding the data into the database.
     private void addButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_addButtonMouseClicked
         
         if(staffID.getText().isEmpty() || staffName.getText().isEmpty() || staffAge.getText().isEmpty() || staffPhoneNo.getText().isEmpty() || staffPhoneNo.getText().isEmpty())
@@ -385,7 +391,7 @@ public class Staff extends javax.swing.JFrame
                 JOptionPane.showMessageDialog(this, "Seller Added Successfully.");
                 
                 con.close();
-                SelectStaff();
+                SelectStaff(); //Calling the method to show the data from the database into the JTable.
             }
             catch (Exception e)
             {
@@ -393,6 +399,19 @@ public class Staff extends javax.swing.JFrame
             }
         }
     }//GEN-LAST:event_addButtonMouseClicked
+    //Code of JTable. Showing the JTable data into the JLebel.
+    private void staffTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_staffTableMouseClicked
+        
+        DefaultTableModel model = (DefaultTableModel) staffTable.getModel();
+        
+        int myIndex = staffTable.getSelectedRow();
+        
+        staffID.setText(model.getValueAt(myIndex, 0).toString());
+        staffName.setText(model.getValueAt(myIndex, 1).toString());
+        staffAge.setText(model.getValueAt(myIndex, 2).toString());
+        staffPhoneNo.setText(model.getValueAt(myIndex, 3).toString());
+        staffPassword.setText(model.getValueAt(myIndex, 4).toString());
+    }//GEN-LAST:event_staffTableMouseClicked
 
     /**
      * @param args the command line arguments
