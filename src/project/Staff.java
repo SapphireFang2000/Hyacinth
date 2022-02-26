@@ -11,6 +11,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import net.proteanit.sql.DbUtils;
@@ -160,6 +161,11 @@ public class Staff extends javax.swing.JFrame
         updateButton.setFont(new java.awt.Font("Monotype Corsiva", 1, 24)); // NOI18N
         updateButton.setForeground(new java.awt.Color(255, 255, 255));
         updateButton.setText("Update");
+        updateButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                updateButtonMouseClicked(evt);
+            }
+        });
         updateButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 updateButtonActionPerformed(evt);
@@ -398,7 +404,7 @@ public class Staff extends javax.swing.JFrame
             
                 int row = add.executeUpdate();
             
-                JOptionPane.showMessageDialog(this, "Seller Added Successfully.");
+                JOptionPane.showMessageDialog(this, "Staff Added Successfully.");
                 
                 con.close();
                 SelectStaff(); //Calling the method to show the data from the database into the JTable.
@@ -459,6 +465,34 @@ public class Staff extends javax.swing.JFrame
             }
         }
     }//GEN-LAST:event_deleteButtonMouseClicked
+    //Code of Update Button. Updating a staff data into the Database.
+    private void updateButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_updateButtonMouseClicked
+        
+        if(staffID.getText().isEmpty() || staffName.getText().isEmpty() || staffAge.getText().isEmpty() || staffPhoneNo.getText().isEmpty() || staffPhoneNo.getText().isEmpty())
+        {
+            JOptionPane.showMessageDialog(this, "Missing Information."); 
+        }
+        else
+        {
+            try
+            {
+                con = DriverManager.getConnection("jdbc:mysql://localhost:3306/hyacinth", "root", "");
+                
+                String query = "Update hyacinth.staff_db set Name='" + staffName.getText() + "'" + ",Age='" + staffAge.getText() + "'" + ",Phone='" + staffPhoneNo.getText() + "'" + ",Password='" + staffPassword.getText() + "'" + ",Gender='" + staffGender.getSelectedItem().toString() + "'" + "where ID=" + staffID.getText();
+                Statement add = con.createStatement();
+                add.executeUpdate(query);
+                
+                SelectStaff(); //Calling the method to show the data from the database into the JTable.
+                
+                JOptionPane.showMessageDialog(this, "Staff Updated."); 
+                
+            }
+            catch (SQLException e)
+            {
+                e.printStackTrace();
+            }
+        }
+    }//GEN-LAST:event_updateButtonMouseClicked
 
     /**
      * @param args the command line arguments
