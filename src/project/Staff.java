@@ -30,7 +30,7 @@ public class Staff extends javax.swing.JFrame
         initComponents();
         SelectStaff();
     }
-    //Database Variable
+    //Database Variable.
     Connection con = null;
     Statement st = null;
     ResultSet rs = null;
@@ -170,6 +170,11 @@ public class Staff extends javax.swing.JFrame
         clearButton.setFont(new java.awt.Font("Monotype Corsiva", 1, 24)); // NOI18N
         clearButton.setForeground(new java.awt.Color(255, 255, 255));
         clearButton.setText("Clear");
+        clearButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                clearButtonMouseClicked(evt);
+            }
+        });
 
         deleteButton.setBackground(new java.awt.Color(255, 153, 51));
         deleteButton.setFont(new java.awt.Font("Monotype Corsiva", 1, 24)); // NOI18N
@@ -370,7 +375,7 @@ public class Staff extends javax.swing.JFrame
         
         if(staffID.getText().isEmpty() || staffName.getText().isEmpty() || staffAge.getText().isEmpty() || staffPhoneNo.getText().isEmpty() || staffPhoneNo.getText().isEmpty())
         {
-            JOptionPane.showMessageDialog(this, "Missing Information.");
+            JOptionPane.showMessageDialog(this, "Missing Information."); 
         }
         else
         {
@@ -399,7 +404,7 @@ public class Staff extends javax.swing.JFrame
             }
         }
     }//GEN-LAST:event_addButtonMouseClicked
-    //Code of JTable. Showing the JTable data into the JLebel.
+    //Code of JTable. Showing the JTable data into the JLabel.
     private void staffTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_staffTableMouseClicked
         
         DefaultTableModel model = (DefaultTableModel) staffTable.getModel();
@@ -412,6 +417,15 @@ public class Staff extends javax.swing.JFrame
         staffPhoneNo.setText(model.getValueAt(myIndex, 3).toString());
         staffPassword.setText(model.getValueAt(myIndex, 4).toString());
     }//GEN-LAST:event_staffTableMouseClicked
+    //Code of Clear Button. To clear the JLabel Cell for wrong input.
+    private void clearButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_clearButtonMouseClicked
+        
+        staffID.setText("");
+        staffName.setText("");
+        staffAge.setText("");
+        staffPhoneNo.setText("");
+        staffPassword.setText("");
+    }//GEN-LAST:event_clearButtonMouseClicked
 
     /**
      * @param args the command line arguments
