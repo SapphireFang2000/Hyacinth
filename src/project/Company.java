@@ -5,6 +5,14 @@
  */
 package project;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.Statement;
+import javax.swing.JOptionPane;
+import net.proteanit.sql.DbUtils;
+
 /**
  *
  * @author Sapphire Fang
@@ -14,8 +22,30 @@ public class Company extends javax.swing.JFrame {
     /**
      * Creates new form Company
      */
-    public Company() {
+    public Company() 
+    {
         initComponents();
+        SelectCompany();
+    }
+    
+    //Database Variable.
+    Connection con = null;
+    Statement st = null;
+    ResultSet rs = null;
+    //Showing the database data into the JTable UI.
+    public void SelectCompany()
+    {
+        try
+        {
+            con = DriverManager.getConnection("jdbc:mysql://localhost:3306/hyacinth", "root", "");
+            st = con.createStatement();
+            rs = st.executeQuery("Select * from hyacinth.company_table");
+            companyTable.setModel(DbUtils.resultSetToTableModel(rs));
+        }
+        catch (Exception e)
+        {
+            e.printStackTrace();
+        }
     }
 
     /**
@@ -36,17 +66,17 @@ public class Company extends javax.swing.JFrame {
         jLabel12 = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
         jLabel14 = new javax.swing.JLabel();
-        jTextField2 = new javax.swing.JTextField();
-        jTextField3 = new javax.swing.JTextField();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
-        jButton5 = new javax.swing.JButton();
+        companyAddress = new javax.swing.JTextField();
+        companyName = new javax.swing.JTextField();
+        addButton = new javax.swing.JButton();
+        updateButton = new javax.swing.JButton();
+        clearButton = new javax.swing.JButton();
+        deleteButton = new javax.swing.JButton();
         jLabel15 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
-        jTextField6 = new javax.swing.JTextField();
-        jTextField7 = new javax.swing.JTextField();
+        companyTable = new javax.swing.JTable();
+        companyID = new javax.swing.JTextField();
+        companyPhoneNo = new javax.swing.JTextField();
         jLabel16 = new javax.swing.JLabel();
         jLabel17 = new javax.swing.JLabel();
 
@@ -85,45 +115,50 @@ public class Company extends javax.swing.JFrame {
         jLabel14.setForeground(new java.awt.Color(255, 153, 51));
         jLabel14.setText("Companys List");
 
-        jTextField2.setBackground(new java.awt.Color(255, 255, 255));
-        jTextField2.setFont(new java.awt.Font("Monotype Corsiva", 0, 24)); // NOI18N
-        jTextField2.setForeground(new java.awt.Color(255, 153, 51));
+        companyAddress.setBackground(new java.awt.Color(255, 255, 255));
+        companyAddress.setFont(new java.awt.Font("Monotype Corsiva", 0, 24)); // NOI18N
+        companyAddress.setForeground(new java.awt.Color(255, 153, 51));
 
-        jTextField3.setBackground(new java.awt.Color(255, 255, 255));
-        jTextField3.setFont(new java.awt.Font("Monotype Corsiva", 0, 24)); // NOI18N
-        jTextField3.setForeground(new java.awt.Color(255, 153, 51));
+        companyName.setBackground(new java.awt.Color(255, 255, 255));
+        companyName.setFont(new java.awt.Font("Monotype Corsiva", 0, 24)); // NOI18N
+        companyName.setForeground(new java.awt.Color(255, 153, 51));
 
-        jButton2.setBackground(new java.awt.Color(255, 153, 51));
-        jButton2.setFont(new java.awt.Font("Monotype Corsiva", 1, 24)); // NOI18N
-        jButton2.setForeground(new java.awt.Color(255, 255, 255));
-        jButton2.setText("Add");
-
-        jButton3.setBackground(new java.awt.Color(255, 153, 51));
-        jButton3.setFont(new java.awt.Font("Monotype Corsiva", 1, 24)); // NOI18N
-        jButton3.setForeground(new java.awt.Color(255, 255, 255));
-        jButton3.setText("Update");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+        addButton.setBackground(new java.awt.Color(255, 153, 51));
+        addButton.setFont(new java.awt.Font("Monotype Corsiva", 1, 24)); // NOI18N
+        addButton.setForeground(new java.awt.Color(255, 255, 255));
+        addButton.setText("Add");
+        addButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                addButtonMouseClicked(evt);
             }
         });
 
-        jButton4.setBackground(new java.awt.Color(255, 153, 51));
-        jButton4.setFont(new java.awt.Font("Monotype Corsiva", 1, 24)); // NOI18N
-        jButton4.setForeground(new java.awt.Color(255, 255, 255));
-        jButton4.setText("Clear");
+        updateButton.setBackground(new java.awt.Color(255, 153, 51));
+        updateButton.setFont(new java.awt.Font("Monotype Corsiva", 1, 24)); // NOI18N
+        updateButton.setForeground(new java.awt.Color(255, 255, 255));
+        updateButton.setText("Update");
+        updateButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                updateButtonActionPerformed(evt);
+            }
+        });
 
-        jButton5.setBackground(new java.awt.Color(255, 153, 51));
-        jButton5.setFont(new java.awt.Font("Monotype Corsiva", 1, 24)); // NOI18N
-        jButton5.setForeground(new java.awt.Color(255, 255, 255));
-        jButton5.setText("Delete");
+        clearButton.setBackground(new java.awt.Color(255, 153, 51));
+        clearButton.setFont(new java.awt.Font("Monotype Corsiva", 1, 24)); // NOI18N
+        clearButton.setForeground(new java.awt.Color(255, 255, 255));
+        clearButton.setText("Clear");
+
+        deleteButton.setBackground(new java.awt.Color(255, 153, 51));
+        deleteButton.setFont(new java.awt.Font("Monotype Corsiva", 1, 24)); // NOI18N
+        deleteButton.setForeground(new java.awt.Color(255, 255, 255));
+        deleteButton.setText("Delete");
 
         jLabel15.setFont(new java.awt.Font("Monotype Corsiva", 1, 36)); // NOI18N
         jLabel15.setForeground(new java.awt.Color(255, 153, 51));
         jLabel15.setText("Manage Company");
 
-        jTable1.setBackground(new java.awt.Color(255, 255, 255));
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        companyTable.setBackground(new java.awt.Color(255, 255, 255));
+        companyTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -135,15 +170,15 @@ public class Company extends javax.swing.JFrame {
                 "ID", "Name", "Address", "Phone No."
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(companyTable);
 
-        jTextField6.setBackground(new java.awt.Color(255, 255, 255));
-        jTextField6.setFont(new java.awt.Font("Monotype Corsiva", 0, 24)); // NOI18N
-        jTextField6.setForeground(new java.awt.Color(255, 153, 51));
+        companyID.setBackground(new java.awt.Color(255, 255, 255));
+        companyID.setFont(new java.awt.Font("Monotype Corsiva", 0, 24)); // NOI18N
+        companyID.setForeground(new java.awt.Color(255, 153, 51));
 
-        jTextField7.setBackground(new java.awt.Color(255, 255, 255));
-        jTextField7.setFont(new java.awt.Font("Monotype Corsiva", 0, 24)); // NOI18N
-        jTextField7.setForeground(new java.awt.Color(255, 153, 51));
+        companyPhoneNo.setBackground(new java.awt.Color(255, 255, 255));
+        companyPhoneNo.setFont(new java.awt.Font("Monotype Corsiva", 0, 24)); // NOI18N
+        companyPhoneNo.setForeground(new java.awt.Color(255, 153, 51));
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -161,16 +196,16 @@ public class Company extends javax.swing.JFrame {
                             .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, 215, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 215, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(companyID, javax.swing.GroupLayout.PREFERRED_SIZE, 215, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(companyName, javax.swing.GroupLayout.PREFERRED_SIZE, 215, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(189, 189, 189)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jTextField2, javax.swing.GroupLayout.DEFAULT_SIZE, 215, Short.MAX_VALUE)
-                            .addComponent(jTextField7, javax.swing.GroupLayout.DEFAULT_SIZE, 215, Short.MAX_VALUE))
+                            .addComponent(companyAddress, javax.swing.GroupLayout.DEFAULT_SIZE, 215, Short.MAX_VALUE)
+                            .addComponent(companyPhoneNo, javax.swing.GroupLayout.DEFAULT_SIZE, 215, Short.MAX_VALUE))
                         .addGap(54, 54, 54))))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
@@ -178,13 +213,13 @@ public class Company extends javax.swing.JFrame {
                 .addGap(381, 381, 381))
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(172, 172, 172)
-                .addComponent(jButton2)
+                .addComponent(addButton)
                 .addGap(109, 109, 109)
-                .addComponent(jButton3)
+                .addComponent(updateButton)
                 .addGap(109, 109, 109)
-                .addComponent(jButton5)
+                .addComponent(deleteButton)
                 .addGap(99, 99, 99)
-                .addComponent(jButton4)
+                .addComponent(clearButton)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -199,21 +234,21 @@ public class Company extends javax.swing.JFrame {
                 .addGap(34, 34, 34)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel12)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(companyAddress, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel7)
-                    .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(companyID, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(17, 17, 17)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel13)
-                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(companyName, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel6)
-                    .addComponent(jTextField7, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(companyPhoneNo, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(93, 93, 93)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton2)
-                    .addComponent(jButton3)
-                    .addComponent(jButton5)
-                    .addComponent(jButton4))
+                    .addComponent(addButton)
+                    .addComponent(updateButton)
+                    .addComponent(deleteButton)
+                    .addComponent(clearButton))
                 .addGap(28, 28, 28)
                 .addComponent(jLabel14)
                 .addGap(18, 18, 18)
@@ -288,9 +323,41 @@ public class Company extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+    private void updateButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateButtonActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton3ActionPerformed
+    }//GEN-LAST:event_updateButtonActionPerformed
+
+    private void addButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_addButtonMouseClicked
+        
+        if(companyID.getText().isEmpty() || companyName.getText().isEmpty() || companyAddress.getText().isEmpty() || companyPhoneNo.getText().isEmpty())
+        {
+            JOptionPane.showMessageDialog(this, "Missing Information."); 
+        }
+        else
+        {
+            try
+            {
+                con = DriverManager.getConnection("jdbc:mysql://localhost:3306/hyacinth", "root", "");
+                PreparedStatement add = con.prepareStatement("insert into company_table values(?,?,?,?)");
+            
+                add.setInt(1, Integer.valueOf(companyID.getText()));
+                add.setString(2, companyName.getText());
+                add.setString(3, companyAddress.getText());
+                add.setString(4, companyPhoneNo.getText());
+            
+                int row = add.executeUpdate();
+            
+                JOptionPane.showMessageDialog(this, "Company Details Added Successfully.");
+                
+                con.close();
+                SelectCompany(); //Calling the method to show the data from the database into the JTable.
+            }
+            catch (Exception e)
+            {
+                e.printStackTrace();
+            }
+        }
+    }//GEN-LAST:event_addButtonMouseClicked
 
     /**
      * @param args the command line arguments
@@ -328,10 +395,14 @@ public class Company extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
+    private javax.swing.JButton addButton;
+    private javax.swing.JButton clearButton;
+    private javax.swing.JTextField companyAddress;
+    private javax.swing.JTextField companyID;
+    private javax.swing.JTextField companyName;
+    private javax.swing.JTextField companyPhoneNo;
+    private javax.swing.JTable companyTable;
+    private javax.swing.JButton deleteButton;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
@@ -345,10 +416,6 @@ public class Company extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField6;
-    private javax.swing.JTextField jTextField7;
+    private javax.swing.JButton updateButton;
     // End of variables declaration//GEN-END:variables
 }
