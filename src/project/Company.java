@@ -9,6 +9,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.sql.Statement;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
@@ -138,6 +139,11 @@ public class Company extends javax.swing.JFrame {
         updateButton.setFont(new java.awt.Font("Monotype Corsiva", 1, 24)); // NOI18N
         updateButton.setForeground(new java.awt.Color(255, 255, 255));
         updateButton.setText("Update");
+        updateButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                updateButtonMouseClicked(evt);
+            }
+        });
         updateButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 updateButtonActionPerformed(evt);
@@ -422,6 +428,33 @@ public class Company extends javax.swing.JFrame {
             }
         }
     }//GEN-LAST:event_deleteButtonMouseClicked
+
+    private void updateButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_updateButtonMouseClicked
+        
+        if(companyID.getText().isEmpty() || companyName.getText().isEmpty() || companyAddress.getText().isEmpty() || companyPhoneNo.getText().isEmpty())
+        {
+            JOptionPane.showMessageDialog(this, "Missing Information."); 
+        }
+        else
+        {
+            try
+            {
+                con = DriverManager.getConnection("jdbc:mysql://localhost:3306/hyacinth", "root", "");
+                
+                String query = "Update hyacinth.company_table set Name='" + companyName.getText() + "'" + ",Address='" + companyAddress.getText() + "'" + ",Phone='" + companyPhoneNo.getText() + "'" + "where ID=" + companyID.getText();
+                Statement add = con.createStatement();
+                add.executeUpdate(query);
+                
+                SelectCompany(); //Calling the method to show the data from the database into the JTable.
+                
+                JOptionPane.showMessageDialog(this, "Company Details Updated.");   
+            }
+            catch (SQLException e)
+            {
+                e.printStackTrace();
+            }
+        }
+    }//GEN-LAST:event_updateButtonMouseClicked
 
     /**
      * @param args the command line arguments
