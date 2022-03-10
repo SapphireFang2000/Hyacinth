@@ -11,6 +11,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 import net.proteanit.sql.DbUtils;
 
 /**
@@ -175,6 +176,11 @@ public class Company extends javax.swing.JFrame {
                 "ID", "Name", "Address", "Phone No."
             }
         ));
+        companyTable.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                companyTableMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(companyTable);
 
         companyID.setBackground(new java.awt.Color(255, 255, 255));
@@ -371,6 +377,18 @@ public class Company extends javax.swing.JFrame {
         companyAddress.setText("");
         companyPhoneNo.setText("");
     }//GEN-LAST:event_clearButtonMouseClicked
+
+    private void companyTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_companyTableMouseClicked
+        
+        DefaultTableModel model = (DefaultTableModel) companyTable.getModel();
+        
+        int myIndex = companyTable.getSelectedRow();
+        
+        companyID.setText(model.getValueAt(myIndex, 0).toString());
+        companyName.setText(model.getValueAt(myIndex, 1).toString());
+        companyAddress.setText(model.getValueAt(myIndex, 2).toString());
+        companyPhoneNo.setText(model.getValueAt(myIndex, 3).toString()); 
+    }//GEN-LAST:event_companyTableMouseClicked
 
     /**
      * @param args the command line arguments
