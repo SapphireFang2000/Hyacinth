@@ -158,6 +158,11 @@ public class Company extends javax.swing.JFrame {
         deleteButton.setFont(new java.awt.Font("Monotype Corsiva", 1, 24)); // NOI18N
         deleteButton.setForeground(new java.awt.Color(255, 255, 255));
         deleteButton.setText("Delete");
+        deleteButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                deleteButtonMouseClicked(evt);
+            }
+        });
 
         jLabel15.setFont(new java.awt.Font("Monotype Corsiva", 1, 36)); // NOI18N
         jLabel15.setForeground(new java.awt.Color(255, 153, 51));
@@ -389,6 +394,34 @@ public class Company extends javax.swing.JFrame {
         companyAddress.setText(model.getValueAt(myIndex, 2).toString());
         companyPhoneNo.setText(model.getValueAt(myIndex, 3).toString()); 
     }//GEN-LAST:event_companyTableMouseClicked
+
+    private void deleteButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_deleteButtonMouseClicked
+        
+        if(companyID.getText().isEmpty())
+        {
+            JOptionPane.showMessageDialog(this, "Enter the Company Details to be Deleted.");
+        }
+        else
+        {
+            try
+            {
+                con = DriverManager.getConnection("jdbc:mysql://localhost:3306/hyacinth", "root", "");
+                
+                String comID = companyID.getText();
+                String query = "Delete from hyacinth.company_table where ID=" + comID;
+                Statement add = con.createStatement();
+                add.executeUpdate(query);
+                
+                SelectCompany(); //Calling the method to show the data from the database into the JTable.
+                
+                JOptionPane.showMessageDialog(this, "Company Details Deleted Successfully.");
+            }
+            catch(Exception e)
+            {
+                e.printStackTrace();
+            }
+        }
+    }//GEN-LAST:event_deleteButtonMouseClicked
 
     /**
      * @param args the command line arguments
