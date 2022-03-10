@@ -384,7 +384,7 @@ public class Staff extends javax.swing.JFrame
     //Code of Add Button. Adding the data into the database.
     private void addButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_addButtonMouseClicked
         
-        if(staffID.getText().isEmpty() || staffName.getText().isEmpty() || staffAge.getText().isEmpty() || staffPhoneNo.getText().isEmpty() || staffPhoneNo.getText().isEmpty())
+        if(staffID.getText().isEmpty() || staffName.getText().isEmpty() || staffAge.getText().isEmpty() || staffPhoneNo.getText().isEmpty() || staffPassword.getText().isEmpty())
         {
             JOptionPane.showMessageDialog(this, "Missing Information."); 
         }
