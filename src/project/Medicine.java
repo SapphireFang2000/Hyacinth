@@ -5,17 +5,73 @@
  */
 package project;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import javax.swing.JOptionPane;
+import net.proteanit.sql.DbUtils;
+
 /**
  *
  * @author Sapphire Fang
  */
-public class Medicine extends javax.swing.JFrame {
+public class Medicine extends javax.swing.JFrame 
+{
 
     /**
      * Creates new form Medicine
      */
-    public Medicine() {
+    public Medicine() 
+    {
         initComponents();
+        SelectMedicine();
+        GetCompany();
+    }
+    
+    //Database Variable.
+    Connection con = null;
+    Statement st = null;
+    ResultSet rs = null;
+    //MFG and EXP Date Variable
+    java.util.Date mfgDate, expDate;
+    java.sql.Date medicineMFG_Date, medicineEXP_Date;
+    //Showing the database data into the JTable UI.
+    public void SelectMedicine()
+    {
+        try
+        {
+            con = DriverManager.getConnection("jdbc:mysql://localhost:3306/hyacinth", "root", "");
+            st = con.createStatement();
+            rs = st.executeQuery("Select * from hyacinth.medicine_table");
+            medicineTable.setModel(DbUtils.resultSetToTableModel(rs));
+        }
+        catch (Exception e)
+        {
+            e.printStackTrace();
+        }
+    }
+    //Showing the Company Name List into the Company Combo Box using Database.
+    public void GetCompany()
+    {
+        try
+        {
+            con = DriverManager.getConnection("jdbc:mysql://localhost:3306/hyacinth", "root", "");
+            st = con.createStatement();
+            rs = st.executeQuery("Select * from hyacinth.company_table");
+            
+            while(rs.next())
+            {
+                String companyName = rs.getString("Name");
+                medicineCompanyName.addItem(companyName);
+            }
+        }
+        catch (SQLException e)
+        {
+            e.printStackTrace();
+        }
     }
 
     /**
@@ -39,20 +95,20 @@ public class Medicine extends javax.swing.JFrame {
         jLabel12 = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
         jLabel14 = new javax.swing.JLabel();
-        jTextField2 = new javax.swing.JTextField();
-        jTextField3 = new javax.swing.JTextField();
-        jTextField4 = new javax.swing.JTextField();
-        jTextField5 = new javax.swing.JTextField();
-        jDateChooser1 = new com.toedter.calendar.JDateChooser();
-        jDateChooser2 = new com.toedter.calendar.JDateChooser();
-        jComboBox1 = new javax.swing.JComboBox<>();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
-        jButton5 = new javax.swing.JButton();
+        medicineID = new javax.swing.JTextField();
+        medicineName = new javax.swing.JTextField();
+        medicinePrice = new javax.swing.JTextField();
+        medicineQuantity = new javax.swing.JTextField();
+        medicineMFGDate = new com.toedter.calendar.JDateChooser();
+        medicineEXPDate = new com.toedter.calendar.JDateChooser();
+        medicineCompanyName = new javax.swing.JComboBox<>();
+        addButton = new javax.swing.JButton();
+        updateButton = new javax.swing.JButton();
+        clearButton = new javax.swing.JButton();
+        deleteButton = new javax.swing.JButton();
         jLabel15 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        medicineTable = new javax.swing.JTable();
         jLabel16 = new javax.swing.JLabel();
         jLabel17 = new javax.swing.JLabel();
 
@@ -77,19 +133,19 @@ public class Medicine extends javax.swing.JFrame {
 
         jLabel6.setFont(new java.awt.Font("Monotype Corsiva", 1, 24)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(255, 153, 51));
-        jLabel6.setText("MFG Date");
+        jLabel6.setText("EXP Date");
 
         jLabel7.setFont(new java.awt.Font("Monotype Corsiva", 1, 24)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(255, 153, 51));
-        jLabel7.setText("EXP Date");
+        jLabel7.setText("MFG Date");
 
         jLabel8.setFont(new java.awt.Font("Monotype Corsiva", 1, 24)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(255, 153, 51));
-        jLabel8.setText("Price");
+        jLabel8.setText("Quantity");
 
         jLabel11.setFont(new java.awt.Font("Monotype Corsiva", 1, 24)); // NOI18N
         jLabel11.setForeground(new java.awt.Color(255, 153, 51));
-        jLabel11.setText("Quantity");
+        jLabel11.setText("Price");
 
         jLabel12.setFont(new java.awt.Font("Monotype Corsiva", 1, 24)); // NOI18N
         jLabel12.setForeground(new java.awt.Color(255, 153, 51));
@@ -103,65 +159,69 @@ public class Medicine extends javax.swing.JFrame {
         jLabel14.setForeground(new java.awt.Color(255, 153, 51));
         jLabel14.setText("Medicines List");
 
-        jTextField2.setBackground(new java.awt.Color(255, 255, 255));
-        jTextField2.setFont(new java.awt.Font("Monotype Corsiva", 0, 24)); // NOI18N
-        jTextField2.setForeground(new java.awt.Color(255, 153, 51));
+        medicineID.setBackground(new java.awt.Color(255, 255, 255));
+        medicineID.setFont(new java.awt.Font("Monotype Corsiva", 0, 24)); // NOI18N
+        medicineID.setForeground(new java.awt.Color(255, 153, 51));
 
-        jTextField3.setBackground(new java.awt.Color(255, 255, 255));
-        jTextField3.setFont(new java.awt.Font("Monotype Corsiva", 0, 24)); // NOI18N
-        jTextField3.setForeground(new java.awt.Color(255, 153, 51));
+        medicineName.setBackground(new java.awt.Color(255, 255, 255));
+        medicineName.setFont(new java.awt.Font("Monotype Corsiva", 0, 24)); // NOI18N
+        medicineName.setForeground(new java.awt.Color(255, 153, 51));
 
-        jTextField4.setBackground(new java.awt.Color(255, 255, 255));
-        jTextField4.setFont(new java.awt.Font("Monotype Corsiva", 0, 24)); // NOI18N
-        jTextField4.setForeground(new java.awt.Color(255, 153, 51));
+        medicinePrice.setBackground(new java.awt.Color(255, 255, 255));
+        medicinePrice.setFont(new java.awt.Font("Monotype Corsiva", 0, 24)); // NOI18N
+        medicinePrice.setForeground(new java.awt.Color(255, 153, 51));
 
-        jTextField5.setBackground(new java.awt.Color(255, 255, 255));
-        jTextField5.setFont(new java.awt.Font("Monotype Corsiva", 0, 24)); // NOI18N
-        jTextField5.setForeground(new java.awt.Color(255, 153, 51));
+        medicineQuantity.setBackground(new java.awt.Color(255, 255, 255));
+        medicineQuantity.setFont(new java.awt.Font("Monotype Corsiva", 0, 24)); // NOI18N
+        medicineQuantity.setForeground(new java.awt.Color(255, 153, 51));
 
-        jDateChooser1.setBackground(new java.awt.Color(255, 255, 255));
-        jDateChooser1.setForeground(new java.awt.Color(255, 153, 51));
+        medicineMFGDate.setBackground(new java.awt.Color(255, 255, 255));
+        medicineMFGDate.setForeground(new java.awt.Color(255, 153, 51));
 
-        jDateChooser2.setBackground(new java.awt.Color(255, 255, 255));
-        jDateChooser2.setForeground(new java.awt.Color(255, 153, 51));
+        medicineEXPDate.setBackground(new java.awt.Color(255, 255, 255));
+        medicineEXPDate.setForeground(new java.awt.Color(255, 153, 51));
 
-        jComboBox1.setBackground(new java.awt.Color(255, 255, 255));
-        jComboBox1.setFont(new java.awt.Font("Monotype Corsiva", 0, 24)); // NOI18N
-        jComboBox1.setForeground(new java.awt.Color(255, 153, 51));
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        medicineCompanyName.setBackground(new java.awt.Color(255, 255, 255));
+        medicineCompanyName.setFont(new java.awt.Font("Monotype Corsiva", 0, 24)); // NOI18N
+        medicineCompanyName.setForeground(new java.awt.Color(255, 153, 51));
 
-        jButton2.setBackground(new java.awt.Color(255, 153, 51));
-        jButton2.setFont(new java.awt.Font("Monotype Corsiva", 1, 24)); // NOI18N
-        jButton2.setForeground(new java.awt.Color(255, 255, 255));
-        jButton2.setText("Add");
-
-        jButton3.setBackground(new java.awt.Color(255, 153, 51));
-        jButton3.setFont(new java.awt.Font("Monotype Corsiva", 1, 24)); // NOI18N
-        jButton3.setForeground(new java.awt.Color(255, 255, 255));
-        jButton3.setText("Update");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+        addButton.setBackground(new java.awt.Color(255, 153, 51));
+        addButton.setFont(new java.awt.Font("Monotype Corsiva", 1, 24)); // NOI18N
+        addButton.setForeground(new java.awt.Color(255, 255, 255));
+        addButton.setText("Add");
+        addButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                addButtonMouseClicked(evt);
             }
         });
 
-        jButton4.setBackground(new java.awt.Color(255, 153, 51));
-        jButton4.setFont(new java.awt.Font("Monotype Corsiva", 1, 24)); // NOI18N
-        jButton4.setForeground(new java.awt.Color(255, 255, 255));
-        jButton4.setText("Clear");
+        updateButton.setBackground(new java.awt.Color(255, 153, 51));
+        updateButton.setFont(new java.awt.Font("Monotype Corsiva", 1, 24)); // NOI18N
+        updateButton.setForeground(new java.awt.Color(255, 255, 255));
+        updateButton.setText("Update");
+        updateButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                updateButtonActionPerformed(evt);
+            }
+        });
 
-        jButton5.setBackground(new java.awt.Color(255, 153, 51));
-        jButton5.setFont(new java.awt.Font("Monotype Corsiva", 1, 24)); // NOI18N
-        jButton5.setForeground(new java.awt.Color(255, 255, 255));
-        jButton5.setText("Delete");
+        clearButton.setBackground(new java.awt.Color(255, 153, 51));
+        clearButton.setFont(new java.awt.Font("Monotype Corsiva", 1, 24)); // NOI18N
+        clearButton.setForeground(new java.awt.Color(255, 255, 255));
+        clearButton.setText("Clear");
+
+        deleteButton.setBackground(new java.awt.Color(255, 153, 51));
+        deleteButton.setFont(new java.awt.Font("Monotype Corsiva", 1, 24)); // NOI18N
+        deleteButton.setForeground(new java.awt.Color(255, 255, 255));
+        deleteButton.setText("Delete");
 
         jLabel15.setFont(new java.awt.Font("Monotype Corsiva", 1, 36)); // NOI18N
         jLabel15.setForeground(new java.awt.Color(255, 153, 51));
         jLabel15.setText("Manage Medicine");
 
-        jTable1.setBackground(new java.awt.Color(255, 255, 255));
-        jTable1.setFont(new java.awt.Font("Monotype Corsiva", 1, 24)); // NOI18N
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        medicineTable.setBackground(new java.awt.Color(255, 255, 255));
+        medicineTable.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+        medicineTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null, null, null},
                 {null, null, null, null, null, null, null},
@@ -170,10 +230,10 @@ public class Medicine extends javax.swing.JFrame {
                 {null, null, null, null, null, null, null}
             },
             new String [] {
-                "ID", "Name", "Quantity", "Price", "Company Name", "MFG Date", "EXP Date"
+                "ID", "Medicine Name", "Price", "Quantity", "MFG Date", "EXP Date", "Company Name"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(medicineTable);
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -181,13 +241,13 @@ public class Medicine extends javax.swing.JFrame {
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(171, 171, 171)
-                .addComponent(jButton2)
+                .addComponent(addButton)
                 .addGap(109, 109, 109)
-                .addComponent(jButton3)
+                .addComponent(updateButton)
                 .addGap(104, 104, 104)
-                .addComponent(jButton5)
+                .addComponent(deleteButton)
                 .addGap(106, 106, 106)
-                .addComponent(jButton4)
+                .addComponent(clearButton)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(32, 32, 32)
@@ -200,7 +260,7 @@ public class Medicine extends javax.swing.JFrame {
                             .addGroup(jPanel2Layout.createSequentialGroup()
                                 .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(81, 81, 81)
-                                .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 215, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(medicineID, javax.swing.GroupLayout.PREFERRED_SIZE, 215, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPanel2Layout.createSequentialGroup()
                                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -208,9 +268,9 @@ public class Medicine extends javax.swing.JFrame {
                                     .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGap(18, 18, 18)
                                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, 215, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 215, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, 215, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                    .addComponent(medicinePrice, javax.swing.GroupLayout.PREFERRED_SIZE, 215, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(medicineName, javax.swing.GroupLayout.PREFERRED_SIZE, 215, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(medicineQuantity, javax.swing.GroupLayout.PREFERRED_SIZE, 215, javax.swing.GroupLayout.PREFERRED_SIZE))))
                         .addGap(189, 189, 189)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -218,9 +278,9 @@ public class Medicine extends javax.swing.JFrame {
                             .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jDateChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jDateChooser2, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(medicineCompanyName, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(medicineMFGDate, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(medicineEXPDate, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(89, 89, 89))))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -241,38 +301,38 @@ public class Medicine extends javax.swing.JFrame {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jLabel12)
-                        .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(medicineID, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(jLabel7))
-                    .addComponent(jDateChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(medicineMFGDate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(17, 17, 17)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel13)
-                            .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(medicineName, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(29, 29, 29)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel11)
-                            .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(medicinePrice, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jDateChooser2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(medicineEXPDate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel6))
                         .addGap(44, 44, 44)))
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(medicineQuantity, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel5)
-                            .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(medicineCompanyName, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(61, 61, 61)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jButton2)
-                            .addComponent(jButton3)
-                            .addComponent(jButton5)
-                            .addComponent(jButton4)))
+                            .addComponent(addButton)
+                            .addComponent(updateButton)
+                            .addComponent(deleteButton)
+                            .addComponent(clearButton)))
                     .addComponent(jLabel8))
                 .addGap(18, 18, 18)
                 .addComponent(jLabel14)
@@ -348,14 +408,57 @@ public class Medicine extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+    private void updateButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateButtonActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton3ActionPerformed
+    }//GEN-LAST:event_updateButtonActionPerformed
+
+    private void addButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_addButtonMouseClicked
+        
+        
+        
+        if(medicineID.getText().isEmpty() || medicineName.getText().isEmpty() || medicinePrice.getText().isEmpty() || medicineQuantity.getText().isEmpty())
+        {
+            JOptionPane.showMessageDialog(this, "Missing Information."); 
+        }
+        else
+        {
+            mfgDate = medicineMFGDate.getDate();
+            medicineMFG_Date = new java.sql.Date(mfgDate.getTime());
+            expDate = medicineEXPDate.getDate();
+            medicineEXP_Date = new java.sql.Date(expDate.getTime());
+            
+            try
+            {
+                con = DriverManager.getConnection("jdbc:mysql://localhost:3306/hyacinth", "root", "");
+                PreparedStatement add = con.prepareStatement("insert into medicine_table values(?,?,?,?,?,?,?)");
+            
+                add.setInt(1, Integer.valueOf(medicineID.getText()));
+                add.setString(2, medicineName.getText());
+                add.setInt(3, Integer.valueOf(medicinePrice.getText()));
+                add.setInt(4, Integer.valueOf(medicineQuantity.getText()));
+                add.setDate(5, medicineMFG_Date);
+                add.setDate(6, medicineEXP_Date);
+                add.setString(7, medicineCompanyName.getSelectedItem().toString());
+            
+                int row = add.executeUpdate();
+            
+                JOptionPane.showMessageDialog(this, "Medicine Details Added Successfully.");
+                
+                con.close();
+                SelectMedicine(); //Calling the method to show the data from the database into the JTable.
+            }
+            catch (SQLException e)
+            {
+                e.printStackTrace();
+            }
+        }
+    }//GEN-LAST:event_addButtonMouseClicked
 
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
+    public static void main(String args[]) 
+    {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
@@ -380,21 +483,19 @@ public class Medicine extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
+        java.awt.EventQueue.invokeLater(new Runnable() 
+        {
+            public void run() 
+            {
                 new Medicine().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
-    private javax.swing.JComboBox<String> jComboBox1;
-    private com.toedter.calendar.JDateChooser jDateChooser1;
-    private com.toedter.calendar.JDateChooser jDateChooser2;
+    private javax.swing.JButton addButton;
+    private javax.swing.JButton clearButton;
+    private javax.swing.JButton deleteButton;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
@@ -411,10 +512,14 @@ public class Medicine extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField4;
-    private javax.swing.JTextField jTextField5;
+    private javax.swing.JComboBox<String> medicineCompanyName;
+    private com.toedter.calendar.JDateChooser medicineEXPDate;
+    private javax.swing.JTextField medicineID;
+    private com.toedter.calendar.JDateChooser medicineMFGDate;
+    private javax.swing.JTextField medicineName;
+    private javax.swing.JTextField medicinePrice;
+    private javax.swing.JTextField medicineQuantity;
+    private javax.swing.JTable medicineTable;
+    private javax.swing.JButton updateButton;
     // End of variables declaration//GEN-END:variables
 }
