@@ -497,7 +497,36 @@ public class Medicine extends javax.swing.JFrame
     }//GEN-LAST:event_deleteButtonMouseClicked
   
     private void updateButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_updateButtonMouseClicked
-        // TODO add your handling code here:
+        
+        if(medicineID.getText().isEmpty() || medicineName.getText().isEmpty() || medicinePrice.getText().isEmpty() || medicineQuantity.getText().isEmpty())
+        {
+            JOptionPane.showMessageDialog(this, "Missing Information."); 
+        }
+        else
+        {
+            mfgDate = medicineMFGDate.getDate();
+            medicineMFG_Date = new java.sql.Date(mfgDate.getTime());
+            expDate = medicineEXPDate.getDate();
+            medicineEXP_Date = new java.sql.Date(expDate.getTime());
+            
+            try
+            {
+                con = DriverManager.getConnection("jdbc:mysql://localhost:3306/hyacinth", "root", "");
+                
+                String query = "Update hyacinth.medicine_table set Name='" + medicineName.getText() + "'" + ",Price='" + medicinePrice.getText() + "'" + ",Quantity='" + medicineQuantity.getText() + "'" + ",MFG='" + medicineMFG_Date +  "'" + ",EXP='" + medicineEXP_Date + "'" + ",Company='" + medicineCompanyName.getSelectedItem().toString() + "'" + "where ID=" + medicineID.getText();
+                Statement add = con.createStatement();
+                add.executeUpdate(query);
+                
+                SelectMedicine(); //Calling the method to show the data from the database into the JTable.
+                
+                JOptionPane.showMessageDialog(this, "Medicine Details Updated."); 
+                
+            }
+            catch (SQLException e)
+            {
+                e.printStackTrace();
+            }
+        }
     }//GEN-LAST:event_updateButtonMouseClicked
 
     private void medicineTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_medicineTableMouseClicked
