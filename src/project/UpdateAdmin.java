@@ -31,10 +31,10 @@ public class UpdateAdmin extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        jTextField2 = new javax.swing.JTextField();
-        jButton2 = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
-        jTextField3 = new javax.swing.JTextField();
+        adminName = new javax.swing.JTextField();
+        loginButton = new javax.swing.JButton();
+        clearButton = new javax.swing.JButton();
+        adminPassword = new javax.swing.JTextField();
         cancelButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -54,21 +54,28 @@ public class UpdateAdmin extends javax.swing.JFrame {
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("Name");
 
-        jTextField2.setBackground(new java.awt.Color(255, 255, 255));
-        jTextField2.setForeground(new java.awt.Color(255, 153, 51));
+        adminName.setBackground(new java.awt.Color(255, 255, 255));
+        adminName.setFont(new java.awt.Font("Monotype Corsiva", 0, 24)); // NOI18N
+        adminName.setForeground(new java.awt.Color(255, 153, 51));
 
-        jButton2.setBackground(new java.awt.Color(240, 240, 240));
-        jButton2.setFont(new java.awt.Font("Monotype Corsiva", 1, 30)); // NOI18N
-        jButton2.setForeground(new java.awt.Color(255, 153, 51));
-        jButton2.setText("Login");
+        loginButton.setBackground(new java.awt.Color(240, 240, 240));
+        loginButton.setFont(new java.awt.Font("Monotype Corsiva", 1, 30)); // NOI18N
+        loginButton.setForeground(new java.awt.Color(255, 153, 51));
+        loginButton.setText("Login");
 
-        jButton1.setBackground(new java.awt.Color(240, 240, 240));
-        jButton1.setFont(new java.awt.Font("Monotype Corsiva", 1, 30)); // NOI18N
-        jButton1.setForeground(new java.awt.Color(255, 153, 51));
-        jButton1.setText("Clear");
+        clearButton.setBackground(new java.awt.Color(240, 240, 240));
+        clearButton.setFont(new java.awt.Font("Monotype Corsiva", 1, 30)); // NOI18N
+        clearButton.setForeground(new java.awt.Color(255, 153, 51));
+        clearButton.setText("Clear");
+        clearButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                clearButtonMouseClicked(evt);
+            }
+        });
 
-        jTextField3.setBackground(new java.awt.Color(255, 255, 255));
-        jTextField3.setForeground(new java.awt.Color(255, 153, 51));
+        adminPassword.setBackground(new java.awt.Color(255, 255, 255));
+        adminPassword.setFont(new java.awt.Font("Monotype Corsiva", 0, 24)); // NOI18N
+        adminPassword.setForeground(new java.awt.Color(255, 153, 51));
 
         cancelButton.setBackground(new java.awt.Color(255, 0, 0));
         cancelButton.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
@@ -94,13 +101,13 @@ public class UpdateAdmin extends javax.swing.JFrame {
                             .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(63, 63, 63)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 238, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 238, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(adminName, javax.swing.GroupLayout.PREFERRED_SIZE, 238, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(adminPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 238, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(165, 165, 165)
-                        .addComponent(jButton2)
+                        .addComponent(loginButton)
                         .addGap(166, 166, 166)
-                        .addComponent(jButton1)))
+                        .addComponent(clearButton)))
                 .addContainerGap(156, Short.MAX_VALUE))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(235, 235, 235)
@@ -119,15 +126,15 @@ public class UpdateAdmin extends javax.swing.JFrame {
                 .addGap(57, 57, 57)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(adminName, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(41, 41, 41)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
-                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(adminPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(76, 76, 76)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton2)
-                    .addComponent(jButton1))
+                    .addComponent(loginButton)
+                    .addComponent(clearButton))
                 .addContainerGap(81, Short.MAX_VALUE))
         );
 
@@ -150,6 +157,12 @@ public class UpdateAdmin extends javax.swing.JFrame {
 
         System.exit(0);
     }//GEN-LAST:event_cancelButtonMouseClicked
+
+    private void clearButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_clearButtonMouseClicked
+        
+        adminName.setText("");
+        adminPassword.setText("");
+    }//GEN-LAST:event_clearButtonMouseClicked
 
     /**
      * @param args the command line arguments
@@ -187,14 +200,14 @@ public class UpdateAdmin extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextField adminName;
+    private javax.swing.JTextField adminPassword;
     private javax.swing.JButton cancelButton;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
+    private javax.swing.JButton clearButton;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
+    private javax.swing.JButton loginButton;
     // End of variables declaration//GEN-END:variables
 }
