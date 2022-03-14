@@ -12,6 +12,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 import net.proteanit.sql.DbUtils;
 
 /**
@@ -243,6 +244,11 @@ public class Medicine extends javax.swing.JFrame
                 "ID", "Medicine Name", "Price", "Quantity", "MFG Date", "EXP Date", "Company Name"
             }
         ));
+        medicineTable.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                medicineTableMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(medicineTable);
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
@@ -423,9 +429,7 @@ public class Medicine extends javax.swing.JFrame
     }//GEN-LAST:event_updateButtonActionPerformed
 
     private void addButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_addButtonMouseClicked
-        
-        
-        
+           
         if(medicineID.getText().isEmpty() || medicineName.getText().isEmpty() || medicinePrice.getText().isEmpty() || medicineQuantity.getText().isEmpty())
         {
             JOptionPane.showMessageDialog(this, "Missing Information."); 
@@ -491,10 +495,22 @@ public class Medicine extends javax.swing.JFrame
             }
         }
     }//GEN-LAST:event_deleteButtonMouseClicked
-
+  
     private void updateButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_updateButtonMouseClicked
         // TODO add your handling code here:
     }//GEN-LAST:event_updateButtonMouseClicked
+
+    private void medicineTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_medicineTableMouseClicked
+        
+        DefaultTableModel model = (DefaultTableModel) medicineTable.getModel();
+        
+        int myIndex = medicineTable.getSelectedRow();
+        
+        medicineID.setText(model.getValueAt(myIndex, 0).toString());
+        medicineName.setText(model.getValueAt(myIndex, 1).toString());
+        medicinePrice.setText(model.getValueAt(myIndex, 2).toString());
+        medicineQuantity.setText(model.getValueAt(myIndex, 3).toString());
+    }//GEN-LAST:event_medicineTableMouseClicked
 
     /**
      * @param args the command line arguments
