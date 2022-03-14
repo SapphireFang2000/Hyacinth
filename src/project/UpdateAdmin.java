@@ -5,6 +5,13 @@
  */
 package project;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Sapphire Fang
@@ -17,7 +24,10 @@ public class UpdateAdmin extends javax.swing.JFrame {
     public UpdateAdmin() {
         initComponents();
     }
-
+    //Database Variable.
+    Connection con = null;
+    Statement st = null;
+    ResultSet rs = null;
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -32,7 +42,7 @@ public class UpdateAdmin extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         adminName = new javax.swing.JTextField();
-        loginButton = new javax.swing.JButton();
+        updateButton = new javax.swing.JButton();
         clearButton = new javax.swing.JButton();
         adminPassword = new javax.swing.JTextField();
         cancelButton = new javax.swing.JButton();
@@ -58,10 +68,15 @@ public class UpdateAdmin extends javax.swing.JFrame {
         adminName.setFont(new java.awt.Font("Monotype Corsiva", 0, 24)); // NOI18N
         adminName.setForeground(new java.awt.Color(255, 153, 51));
 
-        loginButton.setBackground(new java.awt.Color(240, 240, 240));
-        loginButton.setFont(new java.awt.Font("Monotype Corsiva", 1, 30)); // NOI18N
-        loginButton.setForeground(new java.awt.Color(255, 153, 51));
-        loginButton.setText("Login");
+        updateButton.setBackground(new java.awt.Color(240, 240, 240));
+        updateButton.setFont(new java.awt.Font("Monotype Corsiva", 1, 30)); // NOI18N
+        updateButton.setForeground(new java.awt.Color(255, 153, 51));
+        updateButton.setText("Update");
+        updateButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                updateButtonMouseClicked(evt);
+            }
+        });
 
         clearButton.setBackground(new java.awt.Color(240, 240, 240));
         clearButton.setFont(new java.awt.Font("Monotype Corsiva", 1, 30)); // NOI18N
@@ -105,10 +120,10 @@ public class UpdateAdmin extends javax.swing.JFrame {
                             .addComponent(adminPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 238, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(165, 165, 165)
-                        .addComponent(loginButton)
-                        .addGap(166, 166, 166)
-                        .addComponent(clearButton)))
-                .addContainerGap(156, Short.MAX_VALUE))
+                        .addComponent(updateButton)
+                        .addGap(137, 137, 137)
+                        .addComponent(clearButton, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(135, Short.MAX_VALUE))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(235, 235, 235)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 224, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -133,7 +148,7 @@ public class UpdateAdmin extends javax.swing.JFrame {
                     .addComponent(adminPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(76, 76, 76)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(loginButton)
+                    .addComponent(updateButton)
                     .addComponent(clearButton))
                 .addContainerGap(81, Short.MAX_VALUE))
         );
@@ -163,6 +178,32 @@ public class UpdateAdmin extends javax.swing.JFrame {
         adminName.setText("");
         adminPassword.setText("");
     }//GEN-LAST:event_clearButtonMouseClicked
+
+    private void updateButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_updateButtonMouseClicked
+        
+        if(adminName.getText().isEmpty() || adminPassword.getText().isEmpty())
+        {
+            JOptionPane.showMessageDialog(this, "Missing Information."); 
+        }
+        else
+        {
+            try
+            {
+                con = DriverManager.getConnection("jdbc:mysql://localhost:3306/hyacinth", "root", "");
+                
+                String query = "Update hyacinth.admin_table set Name='" + adminName.getText() + "'" + ",Password='" + adminPassword.getText() + "'" + "where ID=" + 1;
+                Statement add = con.createStatement();
+                add.executeUpdate(query);
+                
+                JOptionPane.showMessageDialog(this, "Admin Name and Password Updated."); 
+                
+            }
+            catch (SQLException e)
+            {
+                e.printStackTrace();
+            }
+        }
+    }//GEN-LAST:event_updateButtonMouseClicked
 
     /**
      * @param args the command line arguments
@@ -208,6 +249,6 @@ public class UpdateAdmin extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JButton loginButton;
+    private javax.swing.JButton updateButton;
     // End of variables declaration//GEN-END:variables
 }
