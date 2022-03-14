@@ -199,6 +199,11 @@ public class Medicine extends javax.swing.JFrame
         updateButton.setFont(new java.awt.Font("Monotype Corsiva", 1, 24)); // NOI18N
         updateButton.setForeground(new java.awt.Color(255, 255, 255));
         updateButton.setText("Update");
+        updateButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                updateButtonMouseClicked(evt);
+            }
+        });
         updateButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 updateButtonActionPerformed(evt);
@@ -214,6 +219,11 @@ public class Medicine extends javax.swing.JFrame
         deleteButton.setFont(new java.awt.Font("Monotype Corsiva", 1, 24)); // NOI18N
         deleteButton.setForeground(new java.awt.Color(255, 255, 255));
         deleteButton.setText("Delete");
+        deleteButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                deleteButtonMouseClicked(evt);
+            }
+        });
 
         jLabel15.setFont(new java.awt.Font("Monotype Corsiva", 1, 36)); // NOI18N
         jLabel15.setForeground(new java.awt.Color(255, 153, 51));
@@ -453,6 +463,38 @@ public class Medicine extends javax.swing.JFrame
             }
         }
     }//GEN-LAST:event_addButtonMouseClicked
+
+    private void deleteButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_deleteButtonMouseClicked
+        
+        if(medicineID.getText().isEmpty())
+        {
+            JOptionPane.showMessageDialog(this, "Enter the Medicine Details to be Deleted.");
+        }
+        else
+        {
+            try
+            {
+                con = DriverManager.getConnection("jdbc:mysql://localhost:3306/hyacinth", "root", "");
+                
+                String stID = medicineID.getText();
+                String query = "Delete from hyacinth.medicine_table where ID=" + stID;
+                Statement add = con.createStatement();
+                add.executeUpdate(query);
+                
+                SelectMedicine(); //Calling the method to show the data from the database into the JTable.
+                
+                JOptionPane.showMessageDialog(this, "Medicine Details Deleted Successfully.");
+            }
+            catch(Exception e)
+            {
+                e.printStackTrace();
+            }
+        }
+    }//GEN-LAST:event_deleteButtonMouseClicked
+
+    private void updateButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_updateButtonMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_updateButtonMouseClicked
 
     /**
      * @param args the command line arguments
