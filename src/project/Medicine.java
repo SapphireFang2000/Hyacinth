@@ -215,6 +215,11 @@ public class Medicine extends javax.swing.JFrame
         clearButton.setFont(new java.awt.Font("Monotype Corsiva", 1, 24)); // NOI18N
         clearButton.setForeground(new java.awt.Color(255, 255, 255));
         clearButton.setText("Clear");
+        clearButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                clearButtonMouseClicked(evt);
+            }
+        });
 
         deleteButton.setBackground(new java.awt.Color(255, 153, 51));
         deleteButton.setFont(new java.awt.Font("Monotype Corsiva", 1, 24)); // NOI18N
@@ -540,6 +545,14 @@ public class Medicine extends javax.swing.JFrame
         medicinePrice.setText(model.getValueAt(myIndex, 2).toString());
         medicineQuantity.setText(model.getValueAt(myIndex, 3).toString());
     }//GEN-LAST:event_medicineTableMouseClicked
+
+    private void clearButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_clearButtonMouseClicked
+        
+        medicineID.setText("");
+        medicineName.setText("");
+        medicinePrice.setText("");
+        medicineQuantity.setText("");
+    }//GEN-LAST:event_clearButtonMouseClicked
 
     /**
      * @param args the command line arguments
