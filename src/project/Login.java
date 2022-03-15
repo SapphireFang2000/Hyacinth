@@ -133,6 +133,11 @@ public class Login extends javax.swing.JFrame {
         clearButton.setFont(new java.awt.Font("Monotype Corsiva", 1, 24)); // NOI18N
         clearButton.setForeground(new java.awt.Color(255, 255, 255));
         clearButton.setText("Clear");
+        clearButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                clearButtonMouseClicked(evt);
+            }
+        });
 
         loginButton.setBackground(new java.awt.Color(255, 153, 51));
         loginButton.setFont(new java.awt.Font("Monotype Corsiva", 1, 24)); // NOI18N
@@ -297,6 +302,12 @@ public class Login extends javax.swing.JFrame {
             }
         }
     }//GEN-LAST:event_loginButtonMouseClicked
+
+    private void clearButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_clearButtonMouseClicked
+        
+        userID.setText("");
+        password.setText("");
+    }//GEN-LAST:event_clearButtonMouseClicked
 
     /**
      * @param args the command line arguments
