@@ -78,7 +78,7 @@ public class BillingPoint extends javax.swing.JFrame {
         medicineQuantity = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
+        billingReceipt = new javax.swing.JTextArea();
         jLabel1 = new javax.swing.JLabel();
         dateShow = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
@@ -169,10 +169,12 @@ public class BillingPoint extends javax.swing.JFrame {
         jButton1.setForeground(new java.awt.Color(255, 255, 255));
         jButton1.setText("Print");
 
-        jTextArea1.setBackground(new java.awt.Color(255, 255, 255));
-        jTextArea1.setColumns(20);
-        jTextArea1.setRows(5);
-        jScrollPane2.setViewportView(jTextArea1);
+        billingReceipt.setBackground(new java.awt.Color(255, 255, 255));
+        billingReceipt.setColumns(20);
+        billingReceipt.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        billingReceipt.setForeground(new java.awt.Color(0, 0, 0));
+        billingReceipt.setRows(5);
+        jScrollPane2.setViewportView(billingReceipt);
 
         jLabel1.setBackground(new java.awt.Color(255, 255, 255));
         jLabel1.setFont(new java.awt.Font("Monotype Corsiva", 1, 24)); // NOI18N
@@ -323,9 +325,21 @@ public class BillingPoint extends javax.swing.JFrame {
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
-
+    int i=0, price;
     private void addButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_addButtonMouseClicked
         
+        i++;
+        
+        if(i==1)
+        {
+            billingReceipt.setText(billingReceipt.getText() + "        ********************Hyacinth Pharmacy*******************     \n" 
+            + "                    ID        Name        Quantity        Price        Total\n" 
+            + "                    " + i + "          " + medicineName.getText() + "             " + medicineQuantity.getText() + "              " + price + "           " + Integer.valueOf(medicineQuantity.getText()) * price + "\n");
+        }
+        else
+        {
+            billingReceipt.setText(billingReceipt.getText() + "                    " + i + "          " + medicineName.getText() + "             " + medicineQuantity.getText() + "              " + price + "           " + Integer.valueOf(medicineQuantity.getText()) * price + "\n");
+        }
     }//GEN-LAST:event_addButtonMouseClicked
 
     private void clearButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_clearButtonMouseClicked
@@ -343,7 +357,7 @@ public class BillingPoint extends javax.swing.JFrame {
 
         medicineName.setText(model.getValueAt(myIndex, 1).toString());
         
-        int price = Integer.valueOf(model.getValueAt(myIndex, 2).toString());
+        price = Integer.valueOf(model.getValueAt(myIndex, 2).toString());
     }//GEN-LAST:event_medicineTableMouseClicked
 
     private void cancelButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cancelButtonMouseClicked
@@ -388,6 +402,7 @@ public class BillingPoint extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton addButton;
+    private javax.swing.JTextArea billingReceipt;
     private javax.swing.JButton cancelButton;
     private javax.swing.JButton clearButton;
     private javax.swing.JLabel dateShow;
@@ -403,7 +418,6 @@ public class BillingPoint extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTextArea jTextArea1;
     private javax.swing.JTextField medicineID;
     private javax.swing.JTextField medicineName;
     private javax.swing.JTextField medicineQuantity;
