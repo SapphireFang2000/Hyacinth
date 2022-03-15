@@ -65,10 +65,8 @@ public class BillingPoint extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
         jLabel8 = new javax.swing.JLabel();
-        jLabel12 = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
         jLabel14 = new javax.swing.JLabel();
-        medicineID = new javax.swing.JTextField();
         medicineName = new javax.swing.JTextField();
         addButton = new javax.swing.JButton();
         clearButton = new javax.swing.JButton();
@@ -76,7 +74,7 @@ public class BillingPoint extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         medicineTable = new javax.swing.JTable();
         medicineQuantity = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
+        printButton = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
         billingReceipt = new javax.swing.JTextArea();
         jLabel1 = new javax.swing.JLabel();
@@ -95,10 +93,6 @@ public class BillingPoint extends javax.swing.JFrame {
         jLabel8.setForeground(new java.awt.Color(255, 153, 51));
         jLabel8.setText("Quantity");
 
-        jLabel12.setFont(new java.awt.Font("Monotype Corsiva", 1, 24)); // NOI18N
-        jLabel12.setForeground(new java.awt.Color(255, 153, 51));
-        jLabel12.setText("ID");
-
         jLabel13.setFont(new java.awt.Font("Monotype Corsiva", 1, 24)); // NOI18N
         jLabel13.setForeground(new java.awt.Color(255, 153, 51));
         jLabel13.setText("Medicine Name");
@@ -106,10 +100,6 @@ public class BillingPoint extends javax.swing.JFrame {
         jLabel14.setFont(new java.awt.Font("Monotype Corsiva", 1, 24)); // NOI18N
         jLabel14.setForeground(new java.awt.Color(255, 153, 51));
         jLabel14.setText("Medicines List");
-
-        medicineID.setBackground(new java.awt.Color(255, 255, 255));
-        medicineID.setFont(new java.awt.Font("Monotype Corsiva", 0, 24)); // NOI18N
-        medicineID.setForeground(new java.awt.Color(255, 153, 51));
 
         medicineName.setBackground(new java.awt.Color(255, 255, 255));
         medicineName.setFont(new java.awt.Font("Monotype Corsiva", 0, 24)); // NOI18N
@@ -164,10 +154,15 @@ public class BillingPoint extends javax.swing.JFrame {
         medicineQuantity.setFont(new java.awt.Font("Monotype Corsiva", 0, 24)); // NOI18N
         medicineQuantity.setForeground(new java.awt.Color(255, 153, 51));
 
-        jButton1.setBackground(new java.awt.Color(255, 153, 51));
-        jButton1.setFont(new java.awt.Font("Monotype Corsiva", 1, 24)); // NOI18N
-        jButton1.setForeground(new java.awt.Color(255, 255, 255));
-        jButton1.setText("Print");
+        printButton.setBackground(new java.awt.Color(255, 153, 51));
+        printButton.setFont(new java.awt.Font("Monotype Corsiva", 1, 24)); // NOI18N
+        printButton.setForeground(new java.awt.Color(255, 255, 255));
+        printButton.setText("Print");
+        printButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                printButtonMouseClicked(evt);
+            }
+        });
 
         billingReceipt.setBackground(new java.awt.Color(255, 255, 255));
         billingReceipt.setColumns(20);
@@ -197,10 +192,6 @@ public class BillingPoint extends javax.swing.JFrame {
                 .addGap(32, 32, 32)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(81, 81, 81)
-                        .addComponent(medicineID, javax.swing.GroupLayout.PREFERRED_SIZE, 215, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -210,10 +201,10 @@ public class BillingPoint extends javax.swing.JFrame {
                             .addComponent(medicineQuantity, javax.swing.GroupLayout.PREFERRED_SIZE, 215, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(addButton)
-                        .addGap(37, 37, 37)
+                        .addGap(46, 46, 46)
                         .addComponent(clearButton)
-                        .addGap(48, 48, 48)
-                        .addComponent(jButton1)))
+                        .addGap(44, 44, 44)
+                        .addComponent(printButton)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 35, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
@@ -244,35 +235,28 @@ public class BillingPoint extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(jLabel15)
-                        .addGap(42, 42, 42)
+                        .addGap(58, 58, 58)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel12)
-                            .addComponent(medicineID, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(17, 17, 17)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel14)
                             .addComponent(jLabel13)
-                            .addComponent(medicineName, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(medicineName, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(dateShow, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel2))
+                    .addComponent(jLabel15))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel8)
                             .addComponent(medicineQuantity, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(33, 33, 33)
+                        .addGap(36, 36, 36)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(addButton)
                             .addComponent(clearButton)
-                            .addComponent(jButton1)))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addGap(58, 58, 58)
-                                .addComponent(jLabel14))
-                            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(dateShow, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jLabel2)))
-                        .addGap(18, 18, 18)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(18, 18, 18)
+                            .addComponent(printButton)))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(22, 22, 22)
                 .addComponent(jLabel1)
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 286, Short.MAX_VALUE)
@@ -325,26 +309,32 @@ public class BillingPoint extends javax.swing.JFrame {
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
-    int i=0, price;
+    int i=0, medicineUnitPrice=0;
     private void addButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_addButtonMouseClicked
         
-        i++;
-        
-        if(i==1)
+        if(medicineName.getText().isEmpty() || medicineQuantity.getText().isEmpty())
         {
-            billingReceipt.setText(billingReceipt.getText() + "        ********************Hyacinth Pharmacy*******************     \n" 
-            + "                    ID        Name        Quantity        Price        Total\n" 
-            + "                    " + i + "          " + medicineName.getText() + "             " + medicineQuantity.getText() + "              " + price + "           " + Integer.valueOf(medicineQuantity.getText()) * price + "\n");
+            JOptionPane.showMessageDialog(this, "Missing Information.");
         }
         else
         {
-            billingReceipt.setText(billingReceipt.getText() + "                    " + i + "          " + medicineName.getText() + "             " + medicineQuantity.getText() + "              " + price + "           " + Integer.valueOf(medicineQuantity.getText()) * price + "\n");
+            i++;
+        
+            if(i==1)
+            {
+                billingReceipt.setText(billingReceipt.getText() + "        ********************Hyacinth Pharmacy*******************     \n" 
+                + "                    ID        Name        Quantity        Price        Total\n" 
+                + "                    " + i + "          " + medicineName.getText() + "             " + medicineQuantity.getText() + "              " + medicineUnitPrice + "           " + Integer.valueOf(medicineQuantity.getText()) * medicineUnitPrice + "\n");
+            }
+            else
+            {
+                billingReceipt.setText(billingReceipt.getText() + "                    " + i + "          " + medicineName.getText() + "             " + medicineQuantity.getText() + "              " + medicineUnitPrice + "           " + Integer.valueOf(medicineQuantity.getText()) * medicineUnitPrice + "\n");
+            }
         }
     }//GEN-LAST:event_addButtonMouseClicked
 
     private void clearButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_clearButtonMouseClicked
 
-        medicineID.setText("");
         medicineName.setText("");
         medicineQuantity.setText("");
     }//GEN-LAST:event_clearButtonMouseClicked
@@ -357,13 +347,25 @@ public class BillingPoint extends javax.swing.JFrame {
 
         medicineName.setText(model.getValueAt(myIndex, 1).toString());
         
-        price = Integer.valueOf(model.getValueAt(myIndex, 2).toString());
+        medicineUnitPrice = Integer.valueOf(model.getValueAt(myIndex, 2).toString());
     }//GEN-LAST:event_medicineTableMouseClicked
 
     private void cancelButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cancelButtonMouseClicked
 
         System.exit(0);
     }//GEN-LAST:event_cancelButtonMouseClicked
+
+    private void printButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_printButtonMouseClicked
+        
+        try
+        {
+            billingReceipt.print();
+        }
+        catch(Exception e)
+        {
+            e.printStackTrace();
+        }
+    }//GEN-LAST:event_printButtonMouseClicked
 
     /**
      * @param args the command line arguments
@@ -406,9 +408,7 @@ public class BillingPoint extends javax.swing.JFrame {
     private javax.swing.JButton cancelButton;
     private javax.swing.JButton clearButton;
     private javax.swing.JLabel dateShow;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
@@ -418,10 +418,10 @@ public class BillingPoint extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTextField medicineID;
     private javax.swing.JTextField medicineName;
     private javax.swing.JTextField medicineQuantity;
     private javax.swing.JTable medicineTable;
+    private javax.swing.JButton printButton;
     // End of variables declaration//GEN-END:variables
 
 }
