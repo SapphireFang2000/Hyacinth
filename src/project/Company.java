@@ -11,6 +11,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import net.proteanit.sql.DbUtils;
@@ -28,6 +30,7 @@ public class Company extends javax.swing.JFrame {
     {
         initComponents();
         SelectCompany();
+        ShowDate();
     }
     
     //Database Variable.
@@ -49,7 +52,13 @@ public class Company extends javax.swing.JFrame {
             e.printStackTrace();
         }
     }
-
+    
+    public void ShowDate()
+    {
+        Date date = new Date();
+        SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
+        dateShow.setText(dateFormat.format(date));
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -79,6 +88,8 @@ public class Company extends javax.swing.JFrame {
         companyTable = new javax.swing.JTable();
         companyID = new javax.swing.JTextField();
         companyPhoneNo = new javax.swing.JTextField();
+        jLabel2 = new javax.swing.JLabel();
+        dateShow = new javax.swing.JLabel();
         cancelButton = new javax.swing.JButton();
         logoutButton = new javax.swing.JButton();
 
@@ -212,6 +223,14 @@ public class Company extends javax.swing.JFrame {
         companyPhoneNo.setFont(new java.awt.Font("Monotype Corsiva", 0, 24)); // NOI18N
         companyPhoneNo.setForeground(new java.awt.Color(255, 153, 51));
 
+        jLabel2.setFont(new java.awt.Font("Monotype Corsiva", 1, 24)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(255, 153, 51));
+        jLabel2.setText("Date:");
+
+        dateShow.setFont(new java.awt.Font("Monotype Corsiva", 1, 24)); // NOI18N
+        dateShow.setForeground(new java.awt.Color(255, 153, 51));
+        dateShow.setText("Date");
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -242,7 +261,11 @@ public class Company extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
                 .addComponent(jLabel15, javax.swing.GroupLayout.PREFERRED_SIZE, 265, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(381, 381, 381))
+                .addGap(192, 192, 192)
+                .addComponent(jLabel2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(dateShow, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(172, 172, 172)
                 .addComponent(addButton)
@@ -261,8 +284,15 @@ public class Company extends javax.swing.JFrame {
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(14, 14, 14)
-                .addComponent(jLabel15)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(14, 14, 14)
+                        .addComponent(jLabel15))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(dateShow, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel2))))
                 .addGap(34, 34, 34)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel12)
@@ -543,12 +573,14 @@ public class Company extends javax.swing.JFrame {
     private javax.swing.JTextField companyName;
     private javax.swing.JTextField companyPhoneNo;
     private javax.swing.JTable companyTable;
+    private javax.swing.JLabel dateShow;
     private javax.swing.JButton deleteButton;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel9;
