@@ -9,6 +9,7 @@ package project;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.sql.Statement;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -28,6 +29,7 @@ public class BillingPoint extends javax.swing.JFrame {
         SelectMedicine();
         ShowDate();
     }
+    int i=0, medicineUnitPrice=0, medicineID, oldMedicineQuantity;
     //Database Variable.
     Connection con = null;
     Statement st = null;
@@ -47,11 +49,33 @@ public class BillingPoint extends javax.swing.JFrame {
             e.printStackTrace();
         }
     }
+    
     public void ShowDate()
     {
         Date date = new Date();
         SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
         dateShow.setText(dateFormat.format(date));
+    }
+    
+    public void medicineUpdate()
+    {
+        int newMedicineQuantity;
+        newMedicineQuantity = (oldMedicineQuantity - Integer.valueOf(medicineQuantity.getText()));
+        
+        try
+            {
+                con = DriverManager.getConnection("jdbc:mysql://localhost:3306/hyacinth", "root", "");
+                
+                String query = "Update hyacinth.medicine_table set Quantity='" + newMedicineQuantity + "'" + "where ID=" + medicineID;
+                Statement add = con.createStatement();
+                add.executeUpdate(query);
+                
+                SelectMedicine(); //Calling the method to show the data from the database into the JTable.      
+            }
+            catch (Exception e)
+            {
+                e.printStackTrace();
+            }
     }
     /** This method is called from within the constructor to
      * initialize the form.
@@ -309,7 +333,7 @@ public class BillingPoint extends javax.swing.JFrame {
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
-    int i=0, medicineUnitPrice=0;
+
     private void addButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_addButtonMouseClicked
         
         if(medicineName.getText().isEmpty() || medicineQuantity.getText().isEmpty())
@@ -319,6 +343,8 @@ public class BillingPoint extends javax.swing.JFrame {
         else
         {
             i++;
+            
+            medicineUpdate();
         
             if(i==1)
             {
@@ -344,10 +370,10 @@ public class BillingPoint extends javax.swing.JFrame {
         DefaultTableModel model = (DefaultTableModel) medicineTable.getModel();
 
         int myIndex = medicineTable.getSelectedRow();
-
+        medicineID = Integer.valueOf(model.getValueAt(myIndex, 0).toString());
         medicineName.setText(model.getValueAt(myIndex, 1).toString());
-        
         medicineUnitPrice = Integer.valueOf(model.getValueAt(myIndex, 2).toString());
+        oldMedicineQuantity = Integer.valueOf(model.getValueAt(myIndex, 3).toString());  
     }//GEN-LAST:event_medicineTableMouseClicked
 
     private void cancelButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cancelButtonMouseClicked
