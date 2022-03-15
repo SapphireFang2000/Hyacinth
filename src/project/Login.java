@@ -5,6 +5,13 @@
  */
 package project;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Sapphire Fang
@@ -17,7 +24,10 @@ public class Login extends javax.swing.JFrame {
     public Login() {
         initComponents();
     }
-
+    //Database Variable.
+    Connection con = null;
+    Statement st = null;
+    ResultSet rs = null;
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -128,6 +138,11 @@ public class Login extends javax.swing.JFrame {
         loginButton.setFont(new java.awt.Font("Monotype Corsiva", 1, 24)); // NOI18N
         loginButton.setForeground(new java.awt.Color(255, 255, 255));
         loginButton.setText("Login");
+        loginButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                loginButtonMouseClicked(evt);
+            }
+        });
 
         jLabel8.setIcon(new javax.swing.ImageIcon("D:\\Java Program Documents\\Project\\Images\\Pharmacy_Logo_2-removebg-preview.png")); // NOI18N
 
@@ -228,6 +243,60 @@ public class Login extends javax.swing.JFrame {
 
         System.exit(0);
     }//GEN-LAST:event_cancelButtonMouseClicked
+
+    private void loginButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_loginButtonMouseClicked
+        
+        if(choiceBox.getSelectedItem().toString().equals("Staff Login"))
+        {
+            String query = "select * from hyacinth.staff_db where Name='" + userID.getText() + "' and Password='" + password.getText() + "'";
+        
+            try
+            {
+                con = DriverManager.getConnection("jdbc:mysql://localhost:3306/hyacinth", "root", "");
+                st = con.createStatement();
+                rs = st.executeQuery(query);
+            
+                if(rs.next())
+                {
+                    new BillingPoint().setVisible(true);
+                    this.dispose();
+                }
+                else
+                {
+                    JOptionPane.showMessageDialog(this, "Wrong Seller User ID and Password");
+                }
+            }
+            catch(SQLException e)
+            {
+                e.printStackTrace();
+            }
+        }
+        else
+        {
+            String query = "select * from hyacinth.admin_table where Name='" + userID.getText() + "' and Password='" + password.getText() + "'";
+        
+            try
+            {
+                con = DriverManager.getConnection("jdbc:mysql://localhost:3306/hyacinth", "root", "");
+                st = con.createStatement();
+                rs = st.executeQuery(query);
+            
+                if(rs.next())
+                {
+                    new Staff().setVisible(true);
+                    this.dispose();
+                }
+                else
+                {
+                    JOptionPane.showMessageDialog(this, "Wrong Admin User ID and Password");
+                }
+            }
+            catch(SQLException e)
+            {
+                e.printStackTrace();
+            }
+        }
+    }//GEN-LAST:event_loginButtonMouseClicked
 
     /**
      * @param args the command line arguments
