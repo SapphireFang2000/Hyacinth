@@ -51,12 +51,11 @@
                           <Component id="jLabel10" min="-2" pref="141" max="-2" attributes="0"/>
                       </Group>
                       <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace min="-2" pref="48" max="-2" attributes="0"/>
-                          <Component id="jLabel9" min="-2" pref="89" max="-2" attributes="0"/>
-                      </Group>
-                      <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Component id="jLabel17" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="1" attributes="0">
+                              <Component id="logoutButton" min="-2" pref="105" max="-2" attributes="0"/>
+                              <Component id="jLabel9" min="-2" pref="89" max="-2" attributes="0"/>
+                          </Group>
                       </Group>
                   </Group>
                   <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
@@ -72,23 +71,22 @@
         <DimensionLayout dim="1">
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" attributes="0">
-                  <Group type="103" groupAlignment="1" attributes="0">
-                      <Group type="102" attributes="0">
+                  <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                      <Group type="102" alignment="0" attributes="0">
                           <Component id="cancelButton" min="-2" pref="33" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="jPanel2" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace min="0" pref="20" max="32767" attributes="0"/>
                       </Group>
-                      <Group type="102" attributes="0">
+                      <Group type="102" alignment="0" attributes="0">
                           <EmptySpace min="-2" pref="234" max="-2" attributes="0"/>
                           <Component id="jLabel10" min="-2" max="-2" attributes="0"/>
                           <EmptySpace min="-2" pref="36" max="-2" attributes="0"/>
                           <Component id="jLabel9" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="32767" attributes="0"/>
-                          <Component id="jLabel17" min="-2" max="-2" attributes="0"/>
+                          <Component id="logoutButton" min="-2" max="-2" attributes="0"/>
                       </Group>
                   </Group>
-                  <EmptySpace max="-2" attributes="0"/>
+                  <EmptySpace pref="26" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -104,6 +102,9 @@
             </Property>
             <Property name="text" type="java.lang.String" value="Staff"/>
           </Properties>
+          <Events>
+            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jLabel9MouseClicked"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel10">
           <Properties>
@@ -115,6 +116,9 @@
             </Property>
             <Property name="text" type="java.lang.String" value="Company"/>
           </Properties>
+          <Events>
+            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jLabel10MouseClicked"/>
+          </Events>
         </Component>
         <Container class="javax.swing.JPanel" name="jPanel2">
           <Properties>
@@ -596,17 +600,6 @@
             </Container>
           </SubComponents>
         </Container>
-        <Component class="javax.swing.JLabel" name="jLabel17">
-          <Properties>
-            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Monotype Corsiva" size="36" style="1"/>
-            </Property>
-            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="ff" green="ff" red="ff" type="rgb"/>
-            </Property>
-            <Property name="text" type="java.lang.String" value="Logout"/>
-          </Properties>
-        </Component>
         <Component class="javax.swing.JButton" name="cancelButton">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
@@ -625,6 +618,26 @@
           </Properties>
           <Events>
             <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="cancelButtonMouseClicked"/>
+          </Events>
+        </Component>
+        <Component class="javax.swing.JButton" name="logoutButton">
+          <Properties>
+            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="33" green="99" red="ff" type="rgb"/>
+            </Property>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Monotype Corsiva" size="30" style="1"/>
+            </Property>
+            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="ff" green="ff" red="ff" type="rgb"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="Logout"/>
+            <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+              <Border info="null"/>
+            </Property>
+          </Properties>
+          <Events>
+            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="logoutButtonMouseClicked"/>
           </Events>
         </Component>
       </SubComponents>

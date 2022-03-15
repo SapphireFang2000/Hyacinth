@@ -132,18 +132,18 @@
                   <EmptySpace pref="42" max="32767" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                          <Component id="jComboBox1" pref="215" max="32767" attributes="0"/>
-                          <Component id="jTextField1" max="32767" attributes="0"/>
+                          <Component id="choiceBox" pref="215" max="32767" attributes="0"/>
+                          <Component id="password" max="32767" attributes="0"/>
                       </Group>
-                      <Component id="jTextField2" min="-2" pref="215" max="-2" attributes="0"/>
+                      <Component id="userID" min="-2" pref="215" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace min="-2" pref="22" max="-2" attributes="0"/>
               </Group>
               <Group type="102" alignment="1" attributes="0">
                   <EmptySpace min="-2" pref="80" max="-2" attributes="0"/>
-                  <Component id="jButton2" min="-2" max="-2" attributes="0"/>
+                  <Component id="loginButton" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="32767" attributes="0"/>
-                  <Component id="jButton1" min="-2" max="-2" attributes="0"/>
+                  <Component id="clearButton" min="-2" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="85" max="-2" attributes="0"/>
               </Group>
               <Group type="102" alignment="1" attributes="0">
@@ -176,23 +176,23 @@
                   <Component id="jLabel8" min="-2" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="jComboBox1" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="choiceBox" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="jLabel6" alignment="3" min="-2" pref="36" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="jTextField2" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="userID" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="jLabel4" alignment="3" min="-2" pref="36" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="jTextField1" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="password" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="jLabel7" alignment="3" min="-2" pref="36" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="jButton2" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="jButton1" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="loginButton" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="clearButton" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
               </Group>
@@ -200,7 +200,7 @@
         </DimensionLayout>
       </Layout>
       <SubComponents>
-        <Component class="javax.swing.JTextField" name="jTextField1">
+        <Component class="javax.swing.JTextField" name="password">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="ff" green="ff" red="ff" type="rgb"/>
@@ -213,7 +213,7 @@
             </Property>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="jTextField2">
+        <Component class="javax.swing.JTextField" name="userID">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="ff" green="ff" red="ff" type="rgb"/>
@@ -226,7 +226,7 @@
             </Property>
           </Properties>
         </Component>
-        <Component class="javax.swing.JComboBox" name="jComboBox1">
+        <Component class="javax.swing.JComboBox" name="choiceBox">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="ff" green="ff" red="ff" type="rgb"/>
@@ -292,7 +292,7 @@
             <Property name="text" type="java.lang.String" value="Password"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JButton" name="jButton1">
+        <Component class="javax.swing.JButton" name="clearButton">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="33" green="99" red="ff" type="rgb"/>
@@ -306,7 +306,7 @@
             <Property name="text" type="java.lang.String" value="Clear"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JButton" name="jButton2">
+        <Component class="javax.swing.JButton" name="loginButton">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="33" green="99" red="ff" type="rgb"/>

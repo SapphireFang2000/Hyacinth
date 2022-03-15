@@ -32,15 +32,15 @@ public class Login extends javax.swing.JFrame {
         jLabel9 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
-        jTextField1 = new javax.swing.JTextField();
-        jTextField2 = new javax.swing.JTextField();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        password = new javax.swing.JTextField();
+        userID = new javax.swing.JTextField();
+        choiceBox = new javax.swing.JComboBox<>();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        clearButton = new javax.swing.JButton();
+        loginButton = new javax.swing.JButton();
         jLabel8 = new javax.swing.JLabel();
         cancelButton = new javax.swing.JButton();
 
@@ -90,18 +90,18 @@ public class Login extends javax.swing.JFrame {
 
         jPanel2.setBackground(new java.awt.Color(240, 240, 240));
 
-        jTextField1.setBackground(new java.awt.Color(255, 255, 255));
-        jTextField1.setFont(new java.awt.Font("Monotype Corsiva", 0, 24)); // NOI18N
-        jTextField1.setForeground(new java.awt.Color(255, 153, 51));
+        password.setBackground(new java.awt.Color(255, 255, 255));
+        password.setFont(new java.awt.Font("Monotype Corsiva", 0, 24)); // NOI18N
+        password.setForeground(new java.awt.Color(255, 153, 51));
 
-        jTextField2.setBackground(new java.awt.Color(255, 255, 255));
-        jTextField2.setFont(new java.awt.Font("Monotype Corsiva", 0, 24)); // NOI18N
-        jTextField2.setForeground(new java.awt.Color(255, 153, 51));
+        userID.setBackground(new java.awt.Color(255, 255, 255));
+        userID.setFont(new java.awt.Font("Monotype Corsiva", 0, 24)); // NOI18N
+        userID.setForeground(new java.awt.Color(255, 153, 51));
 
-        jComboBox1.setBackground(new java.awt.Color(255, 255, 255));
-        jComboBox1.setFont(new java.awt.Font("Monotype Corsiva", 0, 20)); // NOI18N
-        jComboBox1.setForeground(new java.awt.Color(255, 153, 51));
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Admin Login", "Staff Login" }));
+        choiceBox.setBackground(new java.awt.Color(255, 255, 255));
+        choiceBox.setFont(new java.awt.Font("Monotype Corsiva", 0, 20)); // NOI18N
+        choiceBox.setForeground(new java.awt.Color(255, 153, 51));
+        choiceBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Admin Login", "Staff Login" }));
 
         jLabel4.setFont(new java.awt.Font("Monotype Corsiva", 1, 24)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(255, 153, 51));
@@ -119,15 +119,15 @@ public class Login extends javax.swing.JFrame {
         jLabel7.setForeground(new java.awt.Color(255, 153, 51));
         jLabel7.setText("Password");
 
-        jButton1.setBackground(new java.awt.Color(255, 153, 51));
-        jButton1.setFont(new java.awt.Font("Monotype Corsiva", 1, 24)); // NOI18N
-        jButton1.setForeground(new java.awt.Color(255, 255, 255));
-        jButton1.setText("Clear");
+        clearButton.setBackground(new java.awt.Color(255, 153, 51));
+        clearButton.setFont(new java.awt.Font("Monotype Corsiva", 1, 24)); // NOI18N
+        clearButton.setForeground(new java.awt.Color(255, 255, 255));
+        clearButton.setText("Clear");
 
-        jButton2.setBackground(new java.awt.Color(255, 153, 51));
-        jButton2.setFont(new java.awt.Font("Monotype Corsiva", 1, 24)); // NOI18N
-        jButton2.setForeground(new java.awt.Color(255, 255, 255));
-        jButton2.setText("Login");
+        loginButton.setBackground(new java.awt.Color(255, 153, 51));
+        loginButton.setFont(new java.awt.Font("Monotype Corsiva", 1, 24)); // NOI18N
+        loginButton.setForeground(new java.awt.Color(255, 255, 255));
+        loginButton.setText("Login");
 
         jLabel8.setIcon(new javax.swing.ImageIcon("D:\\Java Program Documents\\Project\\Images\\Pharmacy_Logo_2-removebg-preview.png")); // NOI18N
 
@@ -155,15 +155,15 @@ public class Login extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 42, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(jComboBox1, 0, 215, Short.MAX_VALUE)
-                        .addComponent(jTextField1))
-                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 215, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(choiceBox, 0, 215, Short.MAX_VALUE)
+                        .addComponent(password))
+                    .addComponent(userID, javax.swing.GroupLayout.PREFERRED_SIZE, 215, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(22, 22, 22))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                 .addGap(80, 80, 80)
-                .addComponent(jButton2)
+                .addComponent(loginButton)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton1)
+                .addComponent(clearButton)
                 .addGap(85, 85, 85))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -188,20 +188,20 @@ public class Login extends javax.swing.JFrame {
                 .addComponent(jLabel8)
                 .addGap(30, 30, 30)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(choiceBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(userID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(password, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(32, 32, 32)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton2)
-                    .addComponent(jButton1))
+                    .addComponent(loginButton)
+                    .addComponent(clearButton))
                 .addGap(32, 32, 32))
         );
 
@@ -266,9 +266,8 @@ public class Login extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton cancelButton;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JComboBox<String> jComboBox1;
+    private javax.swing.JComboBox<String> choiceBox;
+    private javax.swing.JButton clearButton;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel4;
@@ -279,7 +278,8 @@ public class Login extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
+    private javax.swing.JButton loginButton;
+    private javax.swing.JTextField password;
+    private javax.swing.JTextField userID;
     // End of variables declaration//GEN-END:variables
 }

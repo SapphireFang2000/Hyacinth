@@ -105,6 +105,7 @@ public class BillingPoint extends javax.swing.JFrame {
         dateShow = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         cancelButton = new javax.swing.JButton();
+        logoutButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -298,12 +299,25 @@ public class BillingPoint extends javax.swing.JFrame {
             }
         });
 
+        logoutButton.setBackground(new java.awt.Color(255, 153, 51));
+        logoutButton.setFont(new java.awt.Font("Monotype Corsiva", 1, 30)); // NOI18N
+        logoutButton.setForeground(new java.awt.Color(255, 255, 255));
+        logoutButton.setText("Logout");
+        logoutButton.setBorder(null);
+        logoutButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                logoutButtonMouseClicked(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(190, 190, 190)
+                .addGap(37, 37, 37)
+                .addComponent(logoutButton, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(38, 38, 38)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(21, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
@@ -313,9 +327,12 @@ public class BillingPoint extends javax.swing.JFrame {
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addComponent(cancelButton, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(logoutButton)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(cancelButton, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(26, Short.MAX_VALUE))
         );
 
@@ -397,6 +414,12 @@ public class BillingPoint extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_printButtonMouseClicked
 
+    private void logoutButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_logoutButtonMouseClicked
+
+        new Login().setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_logoutButtonMouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -448,6 +471,7 @@ public class BillingPoint extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JButton logoutButton;
     private javax.swing.JTextField medicineName;
     private javax.swing.JTextField medicineQuantity;
     private javax.swing.JTable medicineTable;
