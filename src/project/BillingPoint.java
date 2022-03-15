@@ -340,6 +340,10 @@ public class BillingPoint extends javax.swing.JFrame {
         {
             JOptionPane.showMessageDialog(this, "Missing Information.");
         }
+        else if(oldMedicineQuantity < Integer.valueOf(medicineQuantity.getText()))
+        {
+            JOptionPane.showMessageDialog(this, "Not Enough in Stock.");
+        }
         else
         {
             i++;
