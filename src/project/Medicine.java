@@ -124,11 +124,13 @@ public class Medicine extends javax.swing.JFrame
         dateShow = new javax.swing.JLabel();
         cancelButton = new javax.swing.JButton();
         logoutButton = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
 
         jPanel1.setBackground(new java.awt.Color(255, 153, 51));
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel9.setFont(new java.awt.Font("Monotype Corsiva", 1, 36)); // NOI18N
         jLabel9.setForeground(new java.awt.Color(255, 255, 255));
@@ -138,6 +140,7 @@ public class Medicine extends javax.swing.JFrame
                 jLabel9MouseClicked(evt);
             }
         });
+        jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(48, 311, 89, -1));
 
         jLabel10.setFont(new java.awt.Font("Monotype Corsiva", 1, 36)); // NOI18N
         jLabel10.setForeground(new java.awt.Color(255, 255, 255));
@@ -147,68 +150,69 @@ public class Medicine extends javax.swing.JFrame
                 jLabel10MouseClicked(evt);
             }
         });
+        jPanel1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(22, 234, 141, -1));
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
 
         jLabel5.setFont(new java.awt.Font("Monotype Corsiva", 1, 24)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(255, 153, 51));
+        jLabel5.setForeground(new java.awt.Color(29, 79, 140));
         jLabel5.setText("Company");
 
         jLabel6.setFont(new java.awt.Font("Monotype Corsiva", 1, 24)); // NOI18N
-        jLabel6.setForeground(new java.awt.Color(255, 153, 51));
+        jLabel6.setForeground(new java.awt.Color(29, 79, 140));
         jLabel6.setText("EXP Date");
 
         jLabel7.setFont(new java.awt.Font("Monotype Corsiva", 1, 24)); // NOI18N
-        jLabel7.setForeground(new java.awt.Color(255, 153, 51));
+        jLabel7.setForeground(new java.awt.Color(29, 79, 140));
         jLabel7.setText("MFG Date");
 
         jLabel8.setFont(new java.awt.Font("Monotype Corsiva", 1, 24)); // NOI18N
-        jLabel8.setForeground(new java.awt.Color(255, 153, 51));
+        jLabel8.setForeground(new java.awt.Color(29, 79, 140));
         jLabel8.setText("Quantity");
 
         jLabel11.setFont(new java.awt.Font("Monotype Corsiva", 1, 24)); // NOI18N
-        jLabel11.setForeground(new java.awt.Color(255, 153, 51));
+        jLabel11.setForeground(new java.awt.Color(29, 79, 140));
         jLabel11.setText("Price");
 
         jLabel12.setFont(new java.awt.Font("Monotype Corsiva", 1, 24)); // NOI18N
-        jLabel12.setForeground(new java.awt.Color(255, 153, 51));
+        jLabel12.setForeground(new java.awt.Color(29, 79, 140));
         jLabel12.setText("ID");
 
         jLabel13.setFont(new java.awt.Font("Monotype Corsiva", 1, 24)); // NOI18N
-        jLabel13.setForeground(new java.awt.Color(255, 153, 51));
+        jLabel13.setForeground(new java.awt.Color(29, 79, 140));
         jLabel13.setText("Medicine Name");
 
         jLabel14.setFont(new java.awt.Font("Monotype Corsiva", 1, 36)); // NOI18N
-        jLabel14.setForeground(new java.awt.Color(255, 153, 51));
+        jLabel14.setForeground(new java.awt.Color(29, 79, 140));
         jLabel14.setText("Medicines List");
 
         medicineID.setBackground(new java.awt.Color(255, 255, 255));
         medicineID.setFont(new java.awt.Font("Monotype Corsiva", 0, 24)); // NOI18N
-        medicineID.setForeground(new java.awt.Color(255, 153, 51));
+        medicineID.setForeground(new java.awt.Color(29, 79, 140));
 
         medicineName.setBackground(new java.awt.Color(255, 255, 255));
         medicineName.setFont(new java.awt.Font("Monotype Corsiva", 0, 24)); // NOI18N
-        medicineName.setForeground(new java.awt.Color(255, 153, 51));
+        medicineName.setForeground(new java.awt.Color(29, 79, 140));
 
         medicinePrice.setBackground(new java.awt.Color(255, 255, 255));
         medicinePrice.setFont(new java.awt.Font("Monotype Corsiva", 0, 24)); // NOI18N
-        medicinePrice.setForeground(new java.awt.Color(255, 153, 51));
+        medicinePrice.setForeground(new java.awt.Color(29, 79, 140));
 
         medicineQuantity.setBackground(new java.awt.Color(255, 255, 255));
         medicineQuantity.setFont(new java.awt.Font("Monotype Corsiva", 0, 24)); // NOI18N
-        medicineQuantity.setForeground(new java.awt.Color(255, 153, 51));
+        medicineQuantity.setForeground(new java.awt.Color(29, 79, 140));
 
         medicineMFGDate.setBackground(new java.awt.Color(255, 255, 255));
-        medicineMFGDate.setForeground(new java.awt.Color(255, 153, 51));
+        medicineMFGDate.setForeground(new java.awt.Color(29, 79, 140));
 
         medicineEXPDate.setBackground(new java.awt.Color(255, 255, 255));
-        medicineEXPDate.setForeground(new java.awt.Color(255, 153, 51));
+        medicineEXPDate.setForeground(new java.awt.Color(29, 79, 140));
 
         medicineCompanyName.setBackground(new java.awt.Color(255, 255, 255));
         medicineCompanyName.setFont(new java.awt.Font("Monotype Corsiva", 0, 24)); // NOI18N
-        medicineCompanyName.setForeground(new java.awt.Color(255, 153, 51));
+        medicineCompanyName.setForeground(new java.awt.Color(29, 79, 140));
 
-        addButton.setBackground(new java.awt.Color(255, 153, 51));
+        addButton.setBackground(new java.awt.Color(29, 79, 140));
         addButton.setFont(new java.awt.Font("Monotype Corsiva", 1, 24)); // NOI18N
         addButton.setForeground(new java.awt.Color(255, 255, 255));
         addButton.setText("Add");
@@ -218,7 +222,7 @@ public class Medicine extends javax.swing.JFrame
             }
         });
 
-        updateButton.setBackground(new java.awt.Color(255, 153, 51));
+        updateButton.setBackground(new java.awt.Color(29, 79, 140));
         updateButton.setFont(new java.awt.Font("Monotype Corsiva", 1, 24)); // NOI18N
         updateButton.setForeground(new java.awt.Color(255, 255, 255));
         updateButton.setText("Update");
@@ -233,7 +237,7 @@ public class Medicine extends javax.swing.JFrame
             }
         });
 
-        clearButton.setBackground(new java.awt.Color(255, 153, 51));
+        clearButton.setBackground(new java.awt.Color(29, 79, 140));
         clearButton.setFont(new java.awt.Font("Monotype Corsiva", 1, 24)); // NOI18N
         clearButton.setForeground(new java.awt.Color(255, 255, 255));
         clearButton.setText("Clear");
@@ -243,7 +247,7 @@ public class Medicine extends javax.swing.JFrame
             }
         });
 
-        deleteButton.setBackground(new java.awt.Color(255, 153, 51));
+        deleteButton.setBackground(new java.awt.Color(29, 79, 140));
         deleteButton.setFont(new java.awt.Font("Monotype Corsiva", 1, 24)); // NOI18N
         deleteButton.setForeground(new java.awt.Color(255, 255, 255));
         deleteButton.setText("Delete");
@@ -254,11 +258,12 @@ public class Medicine extends javax.swing.JFrame
         });
 
         jLabel15.setFont(new java.awt.Font("Monotype Corsiva", 1, 36)); // NOI18N
-        jLabel15.setForeground(new java.awt.Color(255, 153, 51));
+        jLabel15.setForeground(new java.awt.Color(29, 79, 140));
         jLabel15.setText("Manage Medicine");
 
         medicineTable.setBackground(new java.awt.Color(255, 255, 255));
         medicineTable.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+        medicineTable.setForeground(new java.awt.Color(29, 79, 140));
         medicineTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null, null, null},
@@ -279,11 +284,11 @@ public class Medicine extends javax.swing.JFrame
         jScrollPane1.setViewportView(medicineTable);
 
         jLabel2.setFont(new java.awt.Font("Monotype Corsiva", 1, 24)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(255, 153, 51));
+        jLabel2.setForeground(new java.awt.Color(29, 79, 140));
         jLabel2.setText("Date:");
 
         dateShow.setFont(new java.awt.Font("Monotype Corsiva", 1, 24)); // NOI18N
-        dateShow.setForeground(new java.awt.Color(255, 153, 51));
+        dateShow.setForeground(new java.awt.Color(29, 79, 140));
         dateShow.setText("Date");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
@@ -403,6 +408,8 @@ public class Medicine extends javax.swing.JFrame
                 .addContainerGap(33, Short.MAX_VALUE))
         );
 
+        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 39, -1, -1));
+
         cancelButton.setBackground(new java.awt.Color(255, 0, 0));
         cancelButton.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         cancelButton.setForeground(new java.awt.Color(255, 255, 255));
@@ -413,8 +420,9 @@ public class Medicine extends javax.swing.JFrame
                 cancelButtonMouseClicked(evt);
             }
         });
+        jPanel1.add(cancelButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(1172, 0, 78, 33));
 
-        logoutButton.setBackground(new java.awt.Color(255, 153, 51));
+        logoutButton.setBackground(new java.awt.Color(29, 79, 140));
         logoutButton.setFont(new java.awt.Font("Monotype Corsiva", 1, 30)); // NOI18N
         logoutButton.setForeground(new java.awt.Color(255, 255, 255));
         logoutButton.setText("Logout");
@@ -424,45 +432,10 @@ public class Medicine extends javax.swing.JFrame
                 logoutButtonMouseClicked(evt);
             }
         });
+        jPanel1.add(logoutButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(32, 639, 105, -1));
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(22, 22, 22)
-                        .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(32, 32, 32)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(logoutButton, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addGap(27, 27, 27)
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(21, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(cancelButton, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE))
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
-                        .addComponent(cancelButton, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
-                        .addGap(234, 234, 234)
-                        .addComponent(jLabel10)
-                        .addGap(36, 36, 36)
-                        .addComponent(jLabel9)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(logoutButton)))
-                .addContainerGap(26, Short.MAX_VALUE))
-        );
+        jLabel1.setIcon(new javax.swing.ImageIcon("D:\\Java Program Documents\\Project\\Images\\Cover.jpg")); // NOI18N
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1250, 700));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -671,6 +644,7 @@ public class Medicine extends javax.swing.JFrame
     private javax.swing.JButton clearButton;
     private javax.swing.JLabel dateShow;
     private javax.swing.JButton deleteButton;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;

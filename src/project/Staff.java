@@ -97,11 +97,13 @@ public class Staff extends javax.swing.JFrame
         dateShow = new javax.swing.JLabel();
         cancelButton = new javax.swing.JButton();
         logoutButton = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
 
         jPanel1.setBackground(new java.awt.Color(255, 153, 51));
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel9.setFont(new java.awt.Font("Monotype Corsiva", 1, 36)); // NOI18N
         jLabel9.setForeground(new java.awt.Color(255, 255, 255));
@@ -111,6 +113,7 @@ public class Staff extends javax.swing.JFrame
                 jLabel9MouseClicked(evt);
             }
         });
+        jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(22, 311, 141, -1));
 
         jLabel10.setFont(new java.awt.Font("Monotype Corsiva", 1, 36)); // NOI18N
         jLabel10.setForeground(new java.awt.Color(255, 255, 255));
@@ -120,55 +123,56 @@ public class Staff extends javax.swing.JFrame
                 jLabel10MouseClicked(evt);
             }
         });
+        jPanel1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(22, 234, 141, -1));
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
 
         jLabel5.setFont(new java.awt.Font("Monotype Corsiva", 1, 24)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(255, 153, 51));
+        jLabel5.setForeground(new java.awt.Color(29, 79, 140));
         jLabel5.setText("Gender");
 
         jLabel6.setFont(new java.awt.Font("Monotype Corsiva", 1, 24)); // NOI18N
-        jLabel6.setForeground(new java.awt.Color(255, 153, 51));
+        jLabel6.setForeground(new java.awt.Color(29, 79, 140));
         jLabel6.setText("Password");
 
         jLabel7.setFont(new java.awt.Font("Monotype Corsiva", 1, 24)); // NOI18N
-        jLabel7.setForeground(new java.awt.Color(255, 153, 51));
+        jLabel7.setForeground(new java.awt.Color(29, 79, 140));
         jLabel7.setText("Phone No.");
 
         jLabel11.setFont(new java.awt.Font("Monotype Corsiva", 1, 24)); // NOI18N
-        jLabel11.setForeground(new java.awt.Color(255, 153, 51));
+        jLabel11.setForeground(new java.awt.Color(29, 79, 140));
         jLabel11.setText("Age");
 
         jLabel12.setFont(new java.awt.Font("Monotype Corsiva", 1, 24)); // NOI18N
-        jLabel12.setForeground(new java.awt.Color(255, 153, 51));
+        jLabel12.setForeground(new java.awt.Color(29, 79, 140));
         jLabel12.setText("ID");
 
         jLabel13.setFont(new java.awt.Font("Monotype Corsiva", 1, 24)); // NOI18N
-        jLabel13.setForeground(new java.awt.Color(255, 153, 51));
+        jLabel13.setForeground(new java.awt.Color(29, 79, 140));
         jLabel13.setText("Name");
 
         jLabel14.setFont(new java.awt.Font("Monotype Corsiva", 1, 36)); // NOI18N
-        jLabel14.setForeground(new java.awt.Color(255, 153, 51));
+        jLabel14.setForeground(new java.awt.Color(29, 79, 140));
         jLabel14.setText("Staffs List");
 
         staffPhoneNo.setBackground(new java.awt.Color(255, 255, 255));
         staffPhoneNo.setFont(new java.awt.Font("Monotype Corsiva", 0, 24)); // NOI18N
-        staffPhoneNo.setForeground(new java.awt.Color(255, 153, 51));
+        staffPhoneNo.setForeground(new java.awt.Color(29, 79, 140));
 
         staffName.setBackground(new java.awt.Color(255, 255, 255));
         staffName.setFont(new java.awt.Font("Monotype Corsiva", 0, 24)); // NOI18N
-        staffName.setForeground(new java.awt.Color(255, 153, 51));
+        staffName.setForeground(new java.awt.Color(29, 79, 140));
 
         staffAge.setBackground(new java.awt.Color(255, 255, 255));
         staffAge.setFont(new java.awt.Font("Monotype Corsiva", 0, 24)); // NOI18N
-        staffAge.setForeground(new java.awt.Color(255, 153, 51));
+        staffAge.setForeground(new java.awt.Color(29, 79, 140));
 
         staffGender.setBackground(new java.awt.Color(255, 255, 255));
         staffGender.setFont(new java.awt.Font("Monotype Corsiva", 0, 24)); // NOI18N
-        staffGender.setForeground(new java.awt.Color(255, 153, 51));
+        staffGender.setForeground(new java.awt.Color(29, 79, 140));
         staffGender.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Male", "Female" }));
 
-        addButton.setBackground(new java.awt.Color(255, 153, 51));
+        addButton.setBackground(new java.awt.Color(29, 79, 140));
         addButton.setFont(new java.awt.Font("Monotype Corsiva", 1, 24)); // NOI18N
         addButton.setForeground(new java.awt.Color(255, 255, 255));
         addButton.setText("Add");
@@ -178,7 +182,7 @@ public class Staff extends javax.swing.JFrame
             }
         });
 
-        updateButton.setBackground(new java.awt.Color(255, 153, 51));
+        updateButton.setBackground(new java.awt.Color(29, 79, 140));
         updateButton.setFont(new java.awt.Font("Monotype Corsiva", 1, 24)); // NOI18N
         updateButton.setForeground(new java.awt.Color(255, 255, 255));
         updateButton.setText("Update");
@@ -193,7 +197,7 @@ public class Staff extends javax.swing.JFrame
             }
         });
 
-        clearButton.setBackground(new java.awt.Color(255, 153, 51));
+        clearButton.setBackground(new java.awt.Color(29, 79, 140));
         clearButton.setFont(new java.awt.Font("Monotype Corsiva", 1, 24)); // NOI18N
         clearButton.setForeground(new java.awt.Color(255, 255, 255));
         clearButton.setText("Clear");
@@ -203,7 +207,7 @@ public class Staff extends javax.swing.JFrame
             }
         });
 
-        deleteButton.setBackground(new java.awt.Color(255, 153, 51));
+        deleteButton.setBackground(new java.awt.Color(29, 79, 140));
         deleteButton.setFont(new java.awt.Font("Monotype Corsiva", 1, 24)); // NOI18N
         deleteButton.setForeground(new java.awt.Color(255, 255, 255));
         deleteButton.setText("Delete");
@@ -214,11 +218,12 @@ public class Staff extends javax.swing.JFrame
         });
 
         jLabel15.setFont(new java.awt.Font("Monotype Corsiva", 1, 36)); // NOI18N
-        jLabel15.setForeground(new java.awt.Color(255, 153, 51));
+        jLabel15.setForeground(new java.awt.Color(29, 79, 140));
         jLabel15.setText("Manage Staff");
 
         staffTable.setBackground(new java.awt.Color(255, 255, 255));
         staffTable.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+        staffTable.setForeground(new java.awt.Color(29, 79, 140));
         staffTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null, null},
@@ -240,18 +245,18 @@ public class Staff extends javax.swing.JFrame
 
         staffID.setBackground(new java.awt.Color(255, 255, 255));
         staffID.setFont(new java.awt.Font("Monotype Corsiva", 0, 24)); // NOI18N
-        staffID.setForeground(new java.awt.Color(255, 153, 51));
+        staffID.setForeground(new java.awt.Color(29, 79, 140));
 
         staffPassword.setBackground(new java.awt.Color(255, 255, 255));
         staffPassword.setFont(new java.awt.Font("Monotype Corsiva", 0, 24)); // NOI18N
-        staffPassword.setForeground(new java.awt.Color(255, 153, 51));
+        staffPassword.setForeground(new java.awt.Color(29, 79, 140));
 
         jLabel2.setFont(new java.awt.Font("Monotype Corsiva", 1, 24)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(255, 153, 51));
+        jLabel2.setForeground(new java.awt.Color(29, 79, 140));
         jLabel2.setText("Date:");
 
         dateShow.setFont(new java.awt.Font("Monotype Corsiva", 1, 24)); // NOI18N
-        dateShow.setForeground(new java.awt.Color(255, 153, 51));
+        dateShow.setForeground(new java.awt.Color(29, 79, 140));
         dateShow.setText("Date");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
@@ -354,6 +359,8 @@ public class Staff extends javax.swing.JFrame
                 .addContainerGap(33, Short.MAX_VALUE))
         );
 
+        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 39, -1, -1));
+
         cancelButton.setBackground(new java.awt.Color(255, 0, 0));
         cancelButton.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         cancelButton.setForeground(new java.awt.Color(255, 255, 255));
@@ -364,8 +371,9 @@ public class Staff extends javax.swing.JFrame
                 cancelButtonMouseClicked(evt);
             }
         });
+        jPanel1.add(cancelButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(1172, 0, 78, 33));
 
-        logoutButton.setBackground(new java.awt.Color(255, 153, 51));
+        logoutButton.setBackground(new java.awt.Color(29, 79, 140));
         logoutButton.setFont(new java.awt.Font("Monotype Corsiva", 1, 30)); // NOI18N
         logoutButton.setForeground(new java.awt.Color(255, 255, 255));
         logoutButton.setText("Logout");
@@ -375,45 +383,10 @@ public class Staff extends javax.swing.JFrame
                 logoutButtonMouseClicked(evt);
             }
         });
+        jPanel1.add(logoutButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(35, 635, 109, 39));
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(22, 22, 22)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jLabel10, javax.swing.GroupLayout.DEFAULT_SIZE, 141, Short.MAX_VALUE)
-                            .addComponent(jLabel9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(35, 35, 35)
-                        .addComponent(logoutButton, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(27, 27, 27)
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(21, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(cancelButton, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE))
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(cancelButton, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(234, 234, 234)
-                        .addComponent(jLabel10)
-                        .addGap(36, 36, 36)
-                        .addComponent(jLabel9)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(logoutButton, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(26, Short.MAX_VALUE))
-        );
+        jLabel1.setIcon(new javax.swing.ImageIcon("D:\\Java Program Documents\\Project\\Images\\Cover.jpg")); // NOI18N
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1250, 700));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -609,6 +582,7 @@ public class Staff extends javax.swing.JFrame
     private javax.swing.JButton clearButton;
     private javax.swing.JLabel dateShow;
     private javax.swing.JButton deleteButton;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;

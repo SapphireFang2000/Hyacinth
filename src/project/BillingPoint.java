@@ -106,31 +106,33 @@ public class BillingPoint extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         cancelButton = new javax.swing.JButton();
         logoutButton = new javax.swing.JButton();
+        jLabel3 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
 
         jPanel1.setBackground(new java.awt.Color(255, 153, 51));
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
 
         jLabel8.setFont(new java.awt.Font("Monotype Corsiva", 1, 24)); // NOI18N
-        jLabel8.setForeground(new java.awt.Color(255, 153, 51));
+        jLabel8.setForeground(new java.awt.Color(29, 79, 140));
         jLabel8.setText("Quantity");
 
         jLabel13.setFont(new java.awt.Font("Monotype Corsiva", 1, 24)); // NOI18N
-        jLabel13.setForeground(new java.awt.Color(255, 153, 51));
+        jLabel13.setForeground(new java.awt.Color(29, 79, 140));
         jLabel13.setText("Medicine Name");
 
         jLabel14.setFont(new java.awt.Font("Monotype Corsiva", 1, 24)); // NOI18N
-        jLabel14.setForeground(new java.awt.Color(255, 153, 51));
+        jLabel14.setForeground(new java.awt.Color(29, 79, 140));
         jLabel14.setText("Medicines List");
 
         medicineName.setBackground(new java.awt.Color(255, 255, 255));
         medicineName.setFont(new java.awt.Font("Monotype Corsiva", 0, 24)); // NOI18N
-        medicineName.setForeground(new java.awt.Color(255, 153, 51));
+        medicineName.setForeground(new java.awt.Color(29, 79, 140));
 
-        addButton.setBackground(new java.awt.Color(255, 153, 51));
+        addButton.setBackground(new java.awt.Color(29, 79, 140));
         addButton.setFont(new java.awt.Font("Monotype Corsiva", 1, 24)); // NOI18N
         addButton.setForeground(new java.awt.Color(255, 255, 255));
         addButton.setText("Add");
@@ -140,7 +142,7 @@ public class BillingPoint extends javax.swing.JFrame {
             }
         });
 
-        clearButton.setBackground(new java.awt.Color(255, 153, 51));
+        clearButton.setBackground(new java.awt.Color(29, 79, 140));
         clearButton.setFont(new java.awt.Font("Monotype Corsiva", 1, 24)); // NOI18N
         clearButton.setForeground(new java.awt.Color(255, 255, 255));
         clearButton.setText("Clear");
@@ -151,11 +153,12 @@ public class BillingPoint extends javax.swing.JFrame {
         });
 
         jLabel15.setFont(new java.awt.Font("Monotype Corsiva", 1, 36)); // NOI18N
-        jLabel15.setForeground(new java.awt.Color(255, 153, 51));
+        jLabel15.setForeground(new java.awt.Color(29, 79, 140));
         jLabel15.setText("Billing Point");
 
         medicineTable.setBackground(new java.awt.Color(255, 255, 255));
         medicineTable.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+        medicineTable.setForeground(new java.awt.Color(29, 79, 140));
         medicineTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null, null, null},
@@ -177,9 +180,9 @@ public class BillingPoint extends javax.swing.JFrame {
 
         medicineQuantity.setBackground(new java.awt.Color(255, 255, 255));
         medicineQuantity.setFont(new java.awt.Font("Monotype Corsiva", 0, 24)); // NOI18N
-        medicineQuantity.setForeground(new java.awt.Color(255, 153, 51));
+        medicineQuantity.setForeground(new java.awt.Color(29, 79, 140));
 
-        printButton.setBackground(new java.awt.Color(255, 153, 51));
+        printButton.setBackground(new java.awt.Color(29, 79, 140));
         printButton.setFont(new java.awt.Font("Monotype Corsiva", 1, 24)); // NOI18N
         printButton.setForeground(new java.awt.Color(255, 255, 255));
         printButton.setText("Print");
@@ -192,21 +195,21 @@ public class BillingPoint extends javax.swing.JFrame {
         billingReceipt.setBackground(new java.awt.Color(255, 255, 255));
         billingReceipt.setColumns(20);
         billingReceipt.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        billingReceipt.setForeground(new java.awt.Color(0, 0, 0));
+        billingReceipt.setForeground(new java.awt.Color(29, 79, 140));
         billingReceipt.setRows(5);
         jScrollPane2.setViewportView(billingReceipt);
 
         jLabel1.setBackground(new java.awt.Color(255, 255, 255));
         jLabel1.setFont(new java.awt.Font("Monotype Corsiva", 1, 24)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(255, 153, 51));
+        jLabel1.setForeground(new java.awt.Color(29, 79, 140));
         jLabel1.setText("Bill");
 
         dateShow.setFont(new java.awt.Font("Monotype Corsiva", 1, 24)); // NOI18N
-        dateShow.setForeground(new java.awt.Color(255, 153, 51));
+        dateShow.setForeground(new java.awt.Color(29, 79, 140));
         dateShow.setText("Date");
 
         jLabel2.setFont(new java.awt.Font("Monotype Corsiva", 1, 24)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(255, 153, 51));
+        jLabel2.setForeground(new java.awt.Color(29, 79, 140));
         jLabel2.setText("Date:");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
@@ -288,6 +291,8 @@ public class BillingPoint extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
+        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 39, -1, -1));
+
         cancelButton.setBackground(new java.awt.Color(255, 0, 0));
         cancelButton.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         cancelButton.setForeground(new java.awt.Color(255, 255, 255));
@@ -298,8 +303,9 @@ public class BillingPoint extends javax.swing.JFrame {
                 cancelButtonMouseClicked(evt);
             }
         });
+        jPanel1.add(cancelButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(1172, 0, 78, 33));
 
-        logoutButton.setBackground(new java.awt.Color(255, 153, 51));
+        logoutButton.setBackground(new java.awt.Color(29, 79, 140));
         logoutButton.setFont(new java.awt.Font("Monotype Corsiva", 1, 30)); // NOI18N
         logoutButton.setForeground(new java.awt.Color(255, 255, 255));
         logoutButton.setText("Logout");
@@ -309,32 +315,10 @@ public class BillingPoint extends javax.swing.JFrame {
                 logoutButtonMouseClicked(evt);
             }
         });
+        jPanel1.add(logoutButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(37, 637, 115, -1));
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(37, 37, 37)
-                .addComponent(logoutButton, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(38, 38, 38)
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(21, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(cancelButton, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE))
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(logoutButton)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(cancelButton, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(26, Short.MAX_VALUE))
-        );
+        jLabel3.setIcon(new javax.swing.ImageIcon("D:\\Java Program Documents\\Project\\Images\\Cover.jpg")); // NOI18N
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1250, 700));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -466,6 +450,7 @@ public class BillingPoint extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;

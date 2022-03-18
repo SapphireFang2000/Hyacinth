@@ -92,11 +92,13 @@ public class Company extends javax.swing.JFrame {
         dateShow = new javax.swing.JLabel();
         cancelButton = new javax.swing.JButton();
         logoutButton = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
 
         jPanel1.setBackground(new java.awt.Color(255, 153, 51));
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel9.setFont(new java.awt.Font("Monotype Corsiva", 1, 36)); // NOI18N
         jLabel9.setForeground(new java.awt.Color(255, 255, 255));
@@ -106,6 +108,7 @@ public class Company extends javax.swing.JFrame {
                 jLabel9MouseClicked(evt);
             }
         });
+        jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(22, 311, 141, -1));
 
         jLabel10.setFont(new java.awt.Font("Monotype Corsiva", 1, 36)); // NOI18N
         jLabel10.setForeground(new java.awt.Color(255, 255, 255));
@@ -115,38 +118,39 @@ public class Company extends javax.swing.JFrame {
                 jLabel10MouseClicked(evt);
             }
         });
+        jPanel1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(46, 235, 89, -1));
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
 
         jLabel6.setFont(new java.awt.Font("Monotype Corsiva", 1, 24)); // NOI18N
-        jLabel6.setForeground(new java.awt.Color(255, 153, 51));
+        jLabel6.setForeground(new java.awt.Color(29, 79, 140));
         jLabel6.setText("Phone No.");
 
         jLabel7.setFont(new java.awt.Font("Monotype Corsiva", 1, 24)); // NOI18N
-        jLabel7.setForeground(new java.awt.Color(255, 153, 51));
+        jLabel7.setForeground(new java.awt.Color(29, 79, 140));
         jLabel7.setText("Address");
 
         jLabel12.setFont(new java.awt.Font("Monotype Corsiva", 1, 24)); // NOI18N
-        jLabel12.setForeground(new java.awt.Color(255, 153, 51));
+        jLabel12.setForeground(new java.awt.Color(29, 79, 140));
         jLabel12.setText("ID");
 
         jLabel13.setFont(new java.awt.Font("Monotype Corsiva", 1, 24)); // NOI18N
-        jLabel13.setForeground(new java.awt.Color(255, 153, 51));
+        jLabel13.setForeground(new java.awt.Color(29, 79, 140));
         jLabel13.setText("Name");
 
         jLabel14.setFont(new java.awt.Font("Monotype Corsiva", 1, 36)); // NOI18N
-        jLabel14.setForeground(new java.awt.Color(255, 153, 51));
+        jLabel14.setForeground(new java.awt.Color(29, 79, 140));
         jLabel14.setText("Companys List");
 
         companyAddress.setBackground(new java.awt.Color(255, 255, 255));
         companyAddress.setFont(new java.awt.Font("Monotype Corsiva", 0, 24)); // NOI18N
-        companyAddress.setForeground(new java.awt.Color(255, 153, 51));
+        companyAddress.setForeground(new java.awt.Color(29, 79, 140));
 
         companyName.setBackground(new java.awt.Color(255, 255, 255));
         companyName.setFont(new java.awt.Font("Monotype Corsiva", 0, 24)); // NOI18N
-        companyName.setForeground(new java.awt.Color(255, 153, 51));
+        companyName.setForeground(new java.awt.Color(29, 79, 140));
 
-        addButton.setBackground(new java.awt.Color(255, 153, 51));
+        addButton.setBackground(new java.awt.Color(29, 79, 140));
         addButton.setFont(new java.awt.Font("Monotype Corsiva", 1, 24)); // NOI18N
         addButton.setForeground(new java.awt.Color(255, 255, 255));
         addButton.setText("Add");
@@ -156,7 +160,7 @@ public class Company extends javax.swing.JFrame {
             }
         });
 
-        updateButton.setBackground(new java.awt.Color(255, 153, 51));
+        updateButton.setBackground(new java.awt.Color(29, 79, 140));
         updateButton.setFont(new java.awt.Font("Monotype Corsiva", 1, 24)); // NOI18N
         updateButton.setForeground(new java.awt.Color(255, 255, 255));
         updateButton.setText("Update");
@@ -171,7 +175,7 @@ public class Company extends javax.swing.JFrame {
             }
         });
 
-        clearButton.setBackground(new java.awt.Color(255, 153, 51));
+        clearButton.setBackground(new java.awt.Color(29, 79, 140));
         clearButton.setFont(new java.awt.Font("Monotype Corsiva", 1, 24)); // NOI18N
         clearButton.setForeground(new java.awt.Color(255, 255, 255));
         clearButton.setText("Clear");
@@ -181,7 +185,7 @@ public class Company extends javax.swing.JFrame {
             }
         });
 
-        deleteButton.setBackground(new java.awt.Color(255, 153, 51));
+        deleteButton.setBackground(new java.awt.Color(29, 79, 140));
         deleteButton.setFont(new java.awt.Font("Monotype Corsiva", 1, 24)); // NOI18N
         deleteButton.setForeground(new java.awt.Color(255, 255, 255));
         deleteButton.setText("Delete");
@@ -192,10 +196,11 @@ public class Company extends javax.swing.JFrame {
         });
 
         jLabel15.setFont(new java.awt.Font("Monotype Corsiva", 1, 36)); // NOI18N
-        jLabel15.setForeground(new java.awt.Color(255, 153, 51));
+        jLabel15.setForeground(new java.awt.Color(29, 79, 140));
         jLabel15.setText("Manage Company");
 
         companyTable.setBackground(new java.awt.Color(255, 255, 255));
+        companyTable.setForeground(new java.awt.Color(29, 79, 140));
         companyTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
@@ -217,18 +222,18 @@ public class Company extends javax.swing.JFrame {
 
         companyID.setBackground(new java.awt.Color(255, 255, 255));
         companyID.setFont(new java.awt.Font("Monotype Corsiva", 0, 24)); // NOI18N
-        companyID.setForeground(new java.awt.Color(255, 153, 51));
+        companyID.setForeground(new java.awt.Color(29, 79, 140));
 
         companyPhoneNo.setBackground(new java.awt.Color(255, 255, 255));
         companyPhoneNo.setFont(new java.awt.Font("Monotype Corsiva", 0, 24)); // NOI18N
-        companyPhoneNo.setForeground(new java.awt.Color(255, 153, 51));
+        companyPhoneNo.setForeground(new java.awt.Color(29, 79, 140));
 
         jLabel2.setFont(new java.awt.Font("Monotype Corsiva", 1, 24)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(255, 153, 51));
+        jLabel2.setForeground(new java.awt.Color(29, 79, 140));
         jLabel2.setText("Date:");
 
         dateShow.setFont(new java.awt.Font("Monotype Corsiva", 1, 24)); // NOI18N
-        dateShow.setForeground(new java.awt.Color(255, 153, 51));
+        dateShow.setForeground(new java.awt.Color(29, 79, 140));
         dateShow.setText("Date");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
@@ -318,6 +323,8 @@ public class Company extends javax.swing.JFrame {
                 .addContainerGap(33, Short.MAX_VALUE))
         );
 
+        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 39, -1, -1));
+
         cancelButton.setBackground(new java.awt.Color(255, 0, 0));
         cancelButton.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         cancelButton.setForeground(new java.awt.Color(255, 255, 255));
@@ -328,8 +335,9 @@ public class Company extends javax.swing.JFrame {
                 cancelButtonMouseClicked(evt);
             }
         });
+        jPanel1.add(cancelButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(1172, 0, 78, 33));
 
-        logoutButton.setBackground(new java.awt.Color(255, 153, 51));
+        logoutButton.setBackground(new java.awt.Color(29, 79, 140));
         logoutButton.setFont(new java.awt.Font("Monotype Corsiva", 1, 30)); // NOI18N
         logoutButton.setForeground(new java.awt.Color(255, 255, 255));
         logoutButton.setText("Logout");
@@ -339,46 +347,10 @@ public class Company extends javax.swing.JFrame {
                 logoutButtonMouseClicked(evt);
             }
         });
+        jPanel1.add(logoutButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(35, 639, 110, -1));
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(22, 22, 22)
-                        .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(46, 46, 46)
-                        .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(35, 35, 35)
-                        .addComponent(logoutButton, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(27, 27, 27)
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(21, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(cancelButton, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE))
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(cancelButton, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(235, 235, 235)
-                        .addComponent(jLabel10)
-                        .addGap(35, 35, 35)
-                        .addComponent(jLabel9)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(logoutButton)))
-                .addContainerGap(26, Short.MAX_VALUE))
-        );
+        jLabel1.setIcon(new javax.swing.ImageIcon("D:\\Java Program Documents\\Project\\Images\\Cover.jpg")); // NOI18N
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1250, 700));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -575,6 +547,7 @@ public class Company extends javax.swing.JFrame {
     private javax.swing.JTable companyTable;
     private javax.swing.JLabel dateShow;
     private javax.swing.JButton deleteButton;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
